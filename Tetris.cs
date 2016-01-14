@@ -15,6 +15,9 @@ namespace Tetris
         int rezultat { get; set; }
         int nagradni_bodovi { get; set; }
 
+        Oblik aktivniOblikPrvi;
+        Oblik aktivniOblikDrugi;
+
         public Tetris(TipIgre _tip_igre)
         {
             tip_igre = _tip_igre;
@@ -110,14 +113,28 @@ namespace Tetris
         }
         
         public void ZatraziAkciju(TipInterakcije tip, 
-            int redni_broj_lika /*0 ili 1*/, Smjerovi smjer, bool rotacija)
+            int redni_broj_lika, Smjerovi smjer)
         {
-            if (tip == TipInterakcije.Pomak)
-            {
-                if (redni_broj_lika == 0)
-                {
+            Kvadrat likZaPomicanje = redni_broj_lika == 0 ? 
+                Kvadrat.OkupiraPrviLik : Kvadrat.OkupiraDrugiLik;
 
-                }
+
+            switch (tip)
+            {
+                case TipInterakcije.Pomak:
+                    if (mozePomak(likZaPomicanje, smjer))
+                    {
+                        pomakni(likZaPomicanje, smjer);
+                    }
+                    break;
+                case TipInterakcije.Rotacija:
+                    if (mozeRotacija(likZaPomicanje))
+                    {
+                        rotiraj(likZaPomicanje);
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -136,9 +153,9 @@ namespace Tetris
         {
             if (postojiAktivan(lik))
             {
-                if (mozePomak(lik))
+                if (mozePomak(lik, Nivo().Smjer))
                 {
-                    pomakni(lik);
+                    pomakni(lik, Nivo().Smjer);
                 }
                 else
                 {
@@ -154,12 +171,45 @@ namespace Tetris
             
         }
 
-        private bool mozePomak(Kvadrat kojiLik){
+        private bool mozeRotacija(Kvadrat kojiLik)
+        {
+            Oblik koji = kojiLik == Kvadrat.OkupiraPrviLik ? aktivniOblikPrvi : aktivniOblikDrugi;
+            
+            bool[,] rotirano = koji.SimulirajRotaciju();
+            var boundingBox = koji.Pozicija;
+
+            for (int i = boundingBox.Item1, k = 0; i < boundingBox.Item1 + 4; ++i, ++k)
+                for (int j = boundingBox.Item2, l = 0; j < boundingBox.Item2 + 4; ++j, ++l)
+                    if (rotirano[k, l] && ((ploca[i, j] != Kvadrat.Slobodan && ploca[i, j] != kojiLik) || !uGranicama(new Tuple<int,int>(i,j))))
+                        return false;
+
+            return true;
+        }
+
+        private void rotiraj(Kvadrat kojiLik)
+        {
+            Oblik koji = kojiLik == Kvadrat.OkupiraPrviLik ? aktivniOblikPrvi : aktivniOblikDrugi;
+            koji.Rotiraj();
+
+            var noveCelije = koji.Celije;
+            var boundingBox = koji.Pozicija;
+
+            for (int i = boundingBox.Item1, k = 0; i < boundingBox.Item1 + 4; ++i, ++k)
+                for (int j = boundingBox.Item2, l = 0; j < boundingBox.Item2 + 4; ++j, ++l)
+                {
+                    if (noveCelije[k, l])
+                        ploca[i, j] = kojiLik;
+                    else if (!noveCelije[k, l] && ploca[i, j] == kojiLik)
+                        ploca[i, j] = Kvadrat.Slobodan;
+                }    
+        }
+
+        private bool mozePomak(Kvadrat kojiLik, Smjerovi smjer){
             for (int i = 1; i < tip_igre.Redaka + 1; ++i)
                 for (int j = 1; j < tip_igre.Stupaca + 1; ++j)
                     if (ploca[i, j] == kojiLik)
                     {
-                        var sljedeciIndeksi = nxt(i,j);
+                        var sljedeciIndeksi = nxt(i,j, smjer);
                         if (!uGranicama(sljedeciIndeksi) || ploca[sljedeciIndeksi.Item1, sljedeciIndeksi.Item2] == Kvadrat.DeaktiviraniPrvi)
                         {
                             return false;
@@ -168,12 +218,15 @@ namespace Tetris
             return true;
         }
 
-        private void pomakni(Kvadrat kojiLik)
+        private void pomakni(Kvadrat kojiLik, Smjerovi smjer)
         {
+            Oblik oblik = kojiLik == Kvadrat.OkupiraPrviLik ? aktivniOblikPrvi : aktivniOblikDrugi;
+            oblik.Pozicija = nxt(oblik.Pozicija.Item1, oblik.Pozicija.Item2, smjer);
+
             var trenutne_koord = koordinateAktivnogLika(kojiLik);
             var sljedece_koord = new List<Tuple<int, int>>();
             foreach(var k in trenutne_koord){
-                var sljedeciIndeksi = nxt(k.Item1, k.Item2);
+                var sljedeciIndeksi = nxt(k.Item1, k.Item2, smjer);
                 sljedece_koord.Add(sljedeciIndeksi);
                 ploca[sljedeciIndeksi.Item1, sljedeciIndeksi.Item2] = kojiLik;
             }
@@ -212,7 +265,7 @@ namespace Tetris
 
         private bool inicijaliziraj(Kvadrat kojiLik)
         {
-            Oblik oblik = SljedeciOblik();
+            aktivniOblikPrvi = SljedeciOblik();
 
             switch (Nivo().Smjer)
             {
@@ -221,15 +274,16 @@ namespace Tetris
                         for (int j = tip_igre.Stupaca / 2 - 2, l = 0; j < tip_igre.Stupaca / 2 + 2; ++j, ++l)
                         {
                             if (ploca[i, j] != Kvadrat.Slobodan) return false;
-                            ploca[i, j] = oblik.Celije[k, l] ? kojiLik : ploca[i, j];
+                            ploca[i, j] = aktivniOblikPrvi.Celije[k, l] ? kojiLik : ploca[i, j];
                         } 
+                    aktivniOblikPrvi.Pozicija = new Tuple<int, int>(1, tip_igre.Stupaca / 2 - 2);
                     break;
                 case Smjerovi.Gore:
                     for (int i = tip_igre.Redaka-4, k = 0; i < tip_igre.Redaka; ++i, ++k)
                         for (int j = tip_igre.Stupaca / 2 - 2, l = 0; j < tip_igre.Stupaca / 2 + 2; ++j, ++l)
                         {
                             if (ploca[i, j] != Kvadrat.Slobodan) return false;
-                            ploca[i, j] = oblik.Celije[k, l] ? kojiLik : ploca[i, j];
+                            ploca[i, j] = aktivniOblikPrvi.Celije[k, l] ? kojiLik : ploca[i, j];
                         }
                     break;
                 case Smjerovi.Desno:
@@ -237,8 +291,8 @@ namespace Tetris
                         for (int j = 1, l = 0; j < 5; ++j, ++l)
                         {
                             if (ploca[i, j] != Kvadrat.Slobodan) return false;
-                            ploca[i, j] = oblik.Celije[k, l] ? kojiLik : ploca[i, j];
-                        }
+                            ploca[i, j] = aktivniOblikPrvi.Celije[k, l] ? kojiLik : ploca[i, j];
+                        }             
                     break;
                 case Smjerovi.Lijevo:
                 default:
@@ -246,16 +300,16 @@ namespace Tetris
                         for (int j = tip_igre.Stupaca - 4, l = 0; j < tip_igre.Stupaca; ++j, ++l)
                         {
                             if (ploca[i, j] != Kvadrat.Slobodan) return false;
-                            ploca[i, j] = oblik.Celije[k, l] ? kojiLik : ploca[i, j];
+                            ploca[i, j] = aktivniOblikPrvi.Celije[k, l] ? kojiLik : ploca[i, j];
                         }
                     break;
             }
             return true;
         }
 
-        private Tuple<int, int> nxt(int red, int stup)
+        private Tuple<int, int> nxt(int red, int stup, Smjerovi smjer)
         {
-            switch (Nivo().Smjer)
+            switch (smjer)
             {
                 case Smjerovi.Dolje:
                     return new Tuple<int, int>(red + 1, stup);

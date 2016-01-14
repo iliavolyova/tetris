@@ -12,6 +12,8 @@ namespace Tetris
 
         public bool[,] Celije { get; set; }
 
+        public Tuple<int, int> Pozicija { get; set; }
+
         public bool this[int r, int s]
         {
             get
@@ -36,6 +38,36 @@ namespace Tetris
             Oblik o = new Oblik();
             o.FromXML(x);
             return o;
+        }
+
+        public bool[,] SimulirajRotaciju()
+        {
+            bool[,] ret = new bool[4, 4];
+
+            for (int i = 0; i < 4; ++i)
+            {
+                for (int j = 0; j < 4; ++j)
+                {
+                    ret[i, j] = Celije[4 - j - 1, i];
+                }
+            }
+
+            return ret;
+        }
+
+        public void Rotiraj()
+        {
+            bool[,] ret = new bool[4, 4];
+
+            for (int i = 0; i < 4; ++i)
+            {
+                for (int j = 0; j < 4; ++j)
+                {
+                    ret[i, j] = Celije[4 - j - 1, i];
+                }
+            }
+
+            Celije = ret;
         }
 
         private string celije_u_string()

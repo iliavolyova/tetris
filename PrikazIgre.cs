@@ -41,9 +41,6 @@ namespace Tetris
             typeof(Panel).InvokeMember("DoubleBuffered",
                 BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
                 null, panel3, new object[] { true });
-
-
-
         }
 
         void render(Panel pan, Oblik o, Brush p)
@@ -140,9 +137,10 @@ namespace Tetris
             countdown--;
             if (countdown == 0)
             {
-                render();
                 countdown = 28;
             }
+
+            render();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -156,43 +154,43 @@ namespace Tetris
             {
                 case Keys.Up:
                     igra.ZatraziAkciju(Tetris.TipInterakcije.Pomak,
-                        0, Smjerovi.Gore, false);
+                        0, Smjerovi.Gore);
                     break;
                 case Keys.Down:
                     igra.ZatraziAkciju(Tetris.TipInterakcije.Pomak,
-                        0, Smjerovi.Dolje, false);
+                        0, Smjerovi.Dolje);
                     break;
                 case Keys.Left:
                     igra.ZatraziAkciju(Tetris.TipInterakcije.Pomak,
-                        0, Smjerovi.Lijevo, false);
+                        0, Smjerovi.Lijevo);
                     break;
                 case Keys.Right:
                     igra.ZatraziAkciju(Tetris.TipInterakcije.Pomak,
-                        0, Smjerovi.Desno, false);
+                        0, Smjerovi.Desno);
                     break;
                 case Keys.W:
                     igra.ZatraziAkciju(Tetris.TipInterakcije.Pomak,
-                        1, Smjerovi.Gore, false);
+                        1, Smjerovi.Gore);
                     break;
                 case Keys.S:
                     igra.ZatraziAkciju(Tetris.TipInterakcije.Pomak,
-                        1, Smjerovi.Dolje, false);
+                        1, Smjerovi.Dolje);
                     break;
                 case Keys.A:
                     igra.ZatraziAkciju(Tetris.TipInterakcije.Pomak,
-                        1, Smjerovi.Lijevo, false);
+                        1, Smjerovi.Lijevo);
                     break;
                 case Keys.D:
                     igra.ZatraziAkciju(Tetris.TipInterakcije.Pomak,
-                        1, Smjerovi.Desno, false);
+                        1, Smjerovi.Desno);
                     break;
                 case Keys.Return:
                     igra.ZatraziAkciju(Tetris.TipInterakcije.Rotacija,
-                        0, Smjerovi.Gore, true);
+                        0, Smjerovi.Gore);
                     break;
                 case Keys.Space:
                     igra.ZatraziAkciju(Tetris.TipInterakcije.Rotacija,
-                        1, Smjerovi.Gore, true);
+                        1, Smjerovi.Gore);
                     break;
             }
         }
