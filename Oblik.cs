@@ -14,6 +14,14 @@ namespace Tetris
 
         public Tuple<int, int> Pozicija { get; set; }
 
+        public System.Drawing.Brush Boja
+        {
+            get
+            {
+                return System.Drawing.Brushes.Red;
+            }
+        }
+
         public bool this[int r, int s]
         {
             get

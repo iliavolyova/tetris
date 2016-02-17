@@ -107,6 +107,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UredivanjeTipova.resx">
       <DependentUpon>UredivanjeTipova.cs</DependentUpon>
@@ -123,6 +124,33 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resursi\box1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resursi\box2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resursi\bs_bright.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resursi\pattern.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resursi\smjer_desno.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resursi\smjer_dolje.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resursi\smjer_gore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resursi\smjer_lijevo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resursi\tile_mask.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
