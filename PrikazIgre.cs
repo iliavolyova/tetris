@@ -147,15 +147,23 @@ namespace Tetris
 
             panel1.BackgroundImage = bm;
             
-            //  render(panel5, igra.SljedeciOblik(), Brushes.DarkBlue);
+            render(panel5, igra.sljedeciOblikPrvi, Brushes.DarkBlue);
             /* render(panel3, igra.SljedeciDrugiOblik(), Brushes.DarkGreen);*/
         }
 
         int countdown = 56;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            igra.Korak(countdown);
-            label2.Text = igra.Rezultat().ToString();
+            if (!igra.GotovaIgra())
+            {
+                igra.Korak(countdown);
+                label2.Text = igra.Rezultat().ToString();
+            }
+            else
+            {
+                timer1.Enabled = false;
+            }
+            
           /*  lbl_bonus.Text = igra.NagradnihBodova().ToString();
             lbl_nivo.Text = (tig.Nivoi.IndexOf(igra.Nivo()) + 1).ToString() + ".";
             lbl_rez.Text = igra.Rezultat().ToString();

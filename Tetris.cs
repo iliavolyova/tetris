@@ -246,6 +246,9 @@ namespace Tetris
         private void pomakni(Kvadrat kojiLik, Smjerovi smjer)
         {
             Oblik oblik = kojiLik == Kvadrat.OkupiraPrviLik ? aktivniOblikPrvi : aktivniOblikDrugi;
+            if (oblik == null)
+                return;
+
             oblik.Pozicija = nxt(oblik.Pozicija.Item1, oblik.Pozicija.Item2, smjer);
 
             var trenutne_koord = koordinateAktivnogLika(kojiLik);
