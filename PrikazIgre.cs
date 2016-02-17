@@ -121,8 +121,8 @@ namespace Tetris
             }
 
             panel1.BackgroundImage = bm;
-            render(panel2, igra.SljedeciOblik(), Brushes.DarkBlue);
-            render(panel3, igra.SljedeciDrugiOblik(), Brushes.DarkGreen);
+            render(panel2, igra.sljedeciOblikPrvi, Brushes.DarkBlue);
+            render(panel3, igra.sljedeciOblikDrugi, Brushes.DarkGreen);
         }
 
         int countdown = 56;

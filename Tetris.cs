@@ -15,8 +15,13 @@ namespace Tetris
         int rezultat { get; set; }
         int nagradni_bodovi { get; set; }
 
-        Oblik aktivniOblikPrvi;
-        Oblik aktivniOblikDrugi;
+        bool gotovaIgra { get; set; }
+
+        public Oblik aktivniOblikPrvi { get; set; }
+        public Oblik aktivniOblikDrugi { get; set; }
+
+        public Oblik sljedeciOblikPrvi { get; set; }
+        public Oblik sljedeciOblikDrugi { get; set; }
 
         public Tetris(TipIgre _tip_igre)
         {
@@ -25,6 +30,7 @@ namespace Tetris
             trenutni_nivo = 0;
             rezultat = 0;
             nagradni_bodovi = 0;
+            gotovaIgra = false;
         }
 
         public enum Kvadrat
@@ -64,7 +70,7 @@ namespace Tetris
 
         public Oblik SljedeciOblik()
         {
-            return Nivo().Oblici.First();
+            return Nivo().sljedeciOblik();
         }
 
         public Oblik SljedeciDrugiOblik()
@@ -88,12 +94,12 @@ namespace Tetris
 
         public int Rezultat()
         {
-            return 0;
+            return rezultat;
         }
 
         public int NagradnihBodova()
         {
-            return 0;
+            return nagradni_bodovi;
         }
 
         public TipNivoa Nivo()
@@ -101,9 +107,25 @@ namespace Tetris
             return tip_igre.Nivoi[trenutni_nivo];
         }
 
+        private void iduciNivo(){
+            trenutni_nivo += 1;
+            if (tip_igre.Nivoi.Count <= trenutni_nivo)
+            {
+                gotovaIgra = true;
+            }
+            else
+            {
+                ploca = novaPloca();
+            }
+        }
+
         public bool GotovaIgra()
         {
-            return false;
+            if (gotovaIgra)
+            {
+                PohraniRezultat();
+            }
+            return gotovaIgra;
         }
 
         public enum TipInterakcije
@@ -144,8 +166,11 @@ namespace Tetris
         {
             if (countdown % 4 == 0 && countdown / 4 <= Nivo().Brzina)
             {
-                gravitacijaAktivni(Kvadrat.OkupiraPrviLik);
-                pocistiPopunjeno();
+                if (gotovaIgra == false)
+                {
+                    gravitacijaAktivni(Kvadrat.OkupiraPrviLik);
+                    pocistiPopunjeno();
+                }
             }
         }
 
@@ -165,7 +190,7 @@ namespace Tetris
             else
             {   
                 if(!inicijaliziraj(lik)){
-                    GotovaIgra();
+                    iduciNivo();
                 }
             }
             
@@ -180,7 +205,7 @@ namespace Tetris
 
             for (int i = boundingBox.Item1, k = 0; i < boundingBox.Item1 + 4; ++i, ++k)
                 for (int j = boundingBox.Item2, l = 0; j < boundingBox.Item2 + 4; ++j, ++l)
-                    if (rotirano[k, l] && ((ploca[i, j] != Kvadrat.Slobodan && ploca[i, j] != kojiLik) || !uGranicama(new Tuple<int,int>(i,j))))
+                    if (i < 0 || j < 0 || rotirano[k, l] && ((ploca[i, j] != Kvadrat.Slobodan && ploca[i, j] != kojiLik) || !uGranicama(new Tuple<int,int>(i,j))))
                         return false;
 
             return true;
@@ -265,7 +290,7 @@ namespace Tetris
 
         private bool inicijaliziraj(Kvadrat kojiLik)
         {
-            aktivniOblikPrvi = SljedeciOblik();
+            urediLikove();
 
             switch (Nivo().Smjer)
             {
@@ -307,6 +332,20 @@ namespace Tetris
             return true;
         }
 
+        private void urediLikove()
+        {
+            if (sljedeciOblikPrvi != null)
+            {
+                aktivniOblikPrvi = sljedeciOblikPrvi;
+                sljedeciOblikPrvi = SljedeciOblik();
+            }
+            else
+            {
+                aktivniOblikPrvi = SljedeciOblik();
+                sljedeciOblikPrvi = SljedeciOblik();
+            }
+        }
+
         private Tuple<int, int> nxt(int red, int stup, Smjerovi smjer)
         {
             switch (smjer)
@@ -338,14 +377,58 @@ namespace Tetris
 
         private void pocistiPopunjeno()
         {
+            double bonusMultiplier = 1.0;
 
+            switch (Nivo().Smjer)
+            {
+                case Smjerovi.Dolje:
+                    for (int i = 1; i < tip_igre.Redaka + 1; ++i){
+                        bool isFull = true;
+                        for (int j = 1; j < tip_igre.Stupaca + 1; ++j)
+                        {
+                            if (ploca[i, j] != Kvadrat.DeaktiviraniPrvi && ploca[i, j] != Kvadrat.DeaktiviraniPrvi)
+                                isFull = false;
+                        }
+                        if (isFull)
+                        {
+                            pomakniDeaktivirano(i);
+                            pribrojiBodove(bonusMultiplier);
+                            bonusMultiplier += 0.05 * Nivo().Brzina;
+                        }
+                            
+                        
+                    }
+                    break;
+                        
+            }
         }
 
-        void PohraniRezultat(int nivo, int bodovi)
+        private void pomakniDeaktivirano(int iznad)
+        {
+            switch (Nivo().Smjer)
+            {
+                case Smjerovi.Dolje:
+                    for (int i = iznad; i > 0; --i)
+                        for (int j = 1; j < tip_igre.Stupaca + 1; ++j)
+                        {
+                            if (ploca[i - 1, j] == Kvadrat.DeaktiviraniPrvi || ploca[i - 1, j] == Kvadrat.DeaktiviraniDrugi)
+                                ploca[i, j] = ploca[i - 1, j];
+                            else
+                                ploca[i, j] = Kvadrat.Slobodan;
+                        }
+                    break;
+            }
+        }
+
+        private void pribrojiBodove(double multiplier){
+            rezultat += (int)(10 * multiplier);
+        }
+
+        void PohraniRezultat()
         {
             string input = Microsoft.VisualBasic.Interaction.InputBox("Upisite ime:", "Pohrana rezultata", "");
 
-            Postavke.DodajRezultat(tip_igre.Ime, input, nivo, bodovi);
+            Postavke.DodajRezultat(tip_igre.Ime, input, trenutni_nivo, rezultat);
             Postavke.Pohrani();
         }
     }

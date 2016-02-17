@@ -30,6 +30,8 @@ namespace Tetris
             ViseLikova,
             Prepreke;
 
+        private Random generator;
+
         public TipNivoa(int _ID = 0, List<Oblik> _Oblici = null, int _Brzina = 1, Smjerovi _Smjer = Smjerovi.Dolje,
             bool _NagKv = false, bool _ViLik = false, bool _Prep = false)
         {
@@ -37,6 +39,13 @@ namespace Tetris
             NagradniKvadratici = _NagKv; ViseLikova = _ViLik; Prepreke = _Prep;
 
             Oblici = _Oblici ?? new List<Oblik>();
+
+            generator = new Random();
+        }
+
+        public Oblik sljedeciOblik()
+        {
+            return Oblici[generator.Next(0, Oblici.Count)];
         }
 
         public static TipNivoa NapraviTipNivoa(XElement x)
