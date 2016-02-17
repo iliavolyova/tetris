@@ -15,7 +15,7 @@ namespace Tetris
         int rezultat { get; set; }
         int nagradni_bodovi { get; set; }
 
-        Oblik aktivniOblikPrvi;
+        public Oblik aktivniOblikPrvi;
         Oblik aktivniOblikDrugi;
 
         public Tetris(TipIgre _tip_igre)
@@ -64,7 +64,12 @@ namespace Tetris
 
         public Oblik SljedeciOblik()
         {
-            return Nivo().Oblici.First();
+              int x = Nivo().Oblici.Count();
+              Random r = new Random();
+              int poz = r.Next(0, x);
+
+              return Nivo().Oblici.ElementAt(poz);
+           // return Nivo().Oblici.First();
         }
 
         public Oblik SljedeciDrugiOblik()
@@ -88,7 +93,7 @@ namespace Tetris
 
         public int Rezultat()
         {
-            return 0;
+            return rezultat;
         }
 
         public int NagradnihBodova()
@@ -204,7 +209,7 @@ namespace Tetris
                 }    
         }
 
-        private bool mozePomak(Kvadrat kojiLik, Smjerovi smjer){
+        public bool mozePomak(Kvadrat kojiLik, Smjerovi smjer){
             for (int i = 1; i < tip_igre.Redaka + 1; ++i)
                 for (int j = 1; j < tip_igre.Stupaca + 1; ++j)
                     if (ploca[i, j] == kojiLik)
@@ -338,7 +343,30 @@ namespace Tetris
 
         private void pocistiPopunjeno()
         {
+            for(int i = tip_igre.Redaka; i > 0; i--)
+            {
+                bool complete = true;
+                for(int j = 1; j < tip_igre.Stupaca +1; j++)
+                {
+                    if(ploca[i,j] != Kvadrat.DeaktiviraniPrvi)
+                    {
+                        complete = false;
+                    }
+                }
 
+                if(complete)
+                {
+                    for(int yc = i; yc > 1; yc--)
+                    {
+                        for(int j = 1; j < tip_igre.Stupaca + 1; j++)
+                        {
+                            ploca[yc, j] = ploca[yc - 1, j];
+                        }
+                    }
+                    i++;
+                    rezultat += 100;
+                }
+            }
         }
 
         void PohraniRezultat(int nivo, int bodovi)
