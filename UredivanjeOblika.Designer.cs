@@ -35,24 +35,27 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.c00 = new System.Windows.Forms.CheckBox();
-            this.c01 = new System.Windows.Forms.CheckBox();
-            this.c02 = new System.Windows.Forms.CheckBox();
-            this.c03 = new System.Windows.Forms.CheckBox();
-            this.c13 = new System.Windows.Forms.CheckBox();
-            this.c12 = new System.Windows.Forms.CheckBox();
-            this.c11 = new System.Windows.Forms.CheckBox();
-            this.c10 = new System.Windows.Forms.CheckBox();
-            this.c23 = new System.Windows.Forms.CheckBox();
-            this.c22 = new System.Windows.Forms.CheckBox();
-            this.c21 = new System.Windows.Forms.CheckBox();
-            this.c20 = new System.Windows.Forms.CheckBox();
             this.c33 = new System.Windows.Forms.CheckBox();
             this.c32 = new System.Windows.Forms.CheckBox();
             this.c31 = new System.Windows.Forms.CheckBox();
             this.c30 = new System.Windows.Forms.CheckBox();
+            this.c23 = new System.Windows.Forms.CheckBox();
+            this.c22 = new System.Windows.Forms.CheckBox();
+            this.c21 = new System.Windows.Forms.CheckBox();
+            this.c20 = new System.Windows.Forms.CheckBox();
+            this.c13 = new System.Windows.Forms.CheckBox();
+            this.c12 = new System.Windows.Forms.CheckBox();
+            this.c11 = new System.Windows.Forms.CheckBox();
+            this.c10 = new System.Windows.Forms.CheckBox();
+            this.c03 = new System.Windows.Forms.CheckBox();
+            this.c02 = new System.Windows.Forms.CheckBox();
+            this.c01 = new System.Windows.Forms.CheckBox();
+            this.c00 = new System.Windows.Forms.CheckBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +64,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(99, 9);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(138, 199);
+            this.listBox1.Size = new System.Drawing.Size(138, 238);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -76,7 +79,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(171, 214);
+            this.button1.Location = new System.Drawing.Point(171, 260);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(66, 23);
             this.button1.TabIndex = 2;
@@ -86,7 +89,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(99, 214);
+            this.button2.Location = new System.Drawing.Point(99, 260);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(66, 23);
             this.button2.TabIndex = 3;
@@ -96,7 +99,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(99, 243);
+            this.button3.Location = new System.Drawing.Point(99, 289);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(138, 23);
             this.button3.TabIndex = 4;
@@ -136,218 +139,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(266, 228);
             this.panel1.TabIndex = 6;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(531, 243);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Zatvori";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(337, 248);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(188, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Sve promjene se automatski spremaju.";
-            // 
-            // c00
-            // 
-            this.c00.Appearance = System.Windows.Forms.Appearance.Button;
-            this.c00.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.c00.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.c00.FlatAppearance.BorderSize = 2;
-            this.c00.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.c00.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.c00.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.c00.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c00.Location = new System.Drawing.Point(65, 45);
-            this.c00.Name = "c00";
-            this.c00.Size = new System.Drawing.Size(30, 30);
-            this.c00.TabIndex = 1;
-            this.c00.UseVisualStyleBackColor = false;
-            this.c00.CheckedChanged += new System.EventHandler(this.c00_CheckedChanged);
-            // 
-            // c01
-            // 
-            this.c01.Appearance = System.Windows.Forms.Appearance.Button;
-            this.c01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.c01.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.c01.FlatAppearance.BorderSize = 2;
-            this.c01.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.c01.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.c01.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.c01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c01.Location = new System.Drawing.Point(101, 45);
-            this.c01.Name = "c01";
-            this.c01.Size = new System.Drawing.Size(30, 30);
-            this.c01.TabIndex = 2;
-            this.c01.UseVisualStyleBackColor = false;
-            // 
-            // c02
-            // 
-            this.c02.Appearance = System.Windows.Forms.Appearance.Button;
-            this.c02.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.c02.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.c02.FlatAppearance.BorderSize = 2;
-            this.c02.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.c02.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.c02.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.c02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c02.Location = new System.Drawing.Point(137, 45);
-            this.c02.Name = "c02";
-            this.c02.Size = new System.Drawing.Size(30, 30);
-            this.c02.TabIndex = 3;
-            this.c02.UseVisualStyleBackColor = false;
-            // 
-            // c03
-            // 
-            this.c03.Appearance = System.Windows.Forms.Appearance.Button;
-            this.c03.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.c03.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.c03.FlatAppearance.BorderSize = 2;
-            this.c03.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.c03.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.c03.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.c03.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c03.Location = new System.Drawing.Point(173, 45);
-            this.c03.Name = "c03";
-            this.c03.Size = new System.Drawing.Size(30, 30);
-            this.c03.TabIndex = 4;
-            this.c03.UseVisualStyleBackColor = false;
-            // 
-            // c13
-            // 
-            this.c13.Appearance = System.Windows.Forms.Appearance.Button;
-            this.c13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.c13.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.c13.FlatAppearance.BorderSize = 2;
-            this.c13.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.c13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.c13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.c13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c13.Location = new System.Drawing.Point(173, 81);
-            this.c13.Name = "c13";
-            this.c13.Size = new System.Drawing.Size(30, 30);
-            this.c13.TabIndex = 8;
-            this.c13.UseVisualStyleBackColor = false;
-            // 
-            // c12
-            // 
-            this.c12.Appearance = System.Windows.Forms.Appearance.Button;
-            this.c12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.c12.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.c12.FlatAppearance.BorderSize = 2;
-            this.c12.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.c12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.c12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.c12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c12.Location = new System.Drawing.Point(137, 81);
-            this.c12.Name = "c12";
-            this.c12.Size = new System.Drawing.Size(30, 30);
-            this.c12.TabIndex = 7;
-            this.c12.UseVisualStyleBackColor = false;
-            // 
-            // c11
-            // 
-            this.c11.Appearance = System.Windows.Forms.Appearance.Button;
-            this.c11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.c11.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.c11.FlatAppearance.BorderSize = 2;
-            this.c11.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.c11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.c11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.c11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c11.Location = new System.Drawing.Point(101, 81);
-            this.c11.Name = "c11";
-            this.c11.Size = new System.Drawing.Size(30, 30);
-            this.c11.TabIndex = 6;
-            this.c11.UseVisualStyleBackColor = false;
-            // 
-            // c10
-            // 
-            this.c10.Appearance = System.Windows.Forms.Appearance.Button;
-            this.c10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.c10.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.c10.FlatAppearance.BorderSize = 2;
-            this.c10.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.c10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.c10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.c10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c10.Location = new System.Drawing.Point(65, 81);
-            this.c10.Name = "c10";
-            this.c10.Size = new System.Drawing.Size(30, 30);
-            this.c10.TabIndex = 5;
-            this.c10.UseVisualStyleBackColor = false;
-            // 
-            // c23
-            // 
-            this.c23.Appearance = System.Windows.Forms.Appearance.Button;
-            this.c23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.c23.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.c23.FlatAppearance.BorderSize = 2;
-            this.c23.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.c23.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.c23.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.c23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c23.Location = new System.Drawing.Point(173, 117);
-            this.c23.Name = "c23";
-            this.c23.Size = new System.Drawing.Size(30, 30);
-            this.c23.TabIndex = 12;
-            this.c23.UseVisualStyleBackColor = false;
-            // 
-            // c22
-            // 
-            this.c22.Appearance = System.Windows.Forms.Appearance.Button;
-            this.c22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.c22.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.c22.FlatAppearance.BorderSize = 2;
-            this.c22.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.c22.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.c22.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.c22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c22.Location = new System.Drawing.Point(137, 117);
-            this.c22.Name = "c22";
-            this.c22.Size = new System.Drawing.Size(30, 30);
-            this.c22.TabIndex = 11;
-            this.c22.UseVisualStyleBackColor = false;
-            // 
-            // c21
-            // 
-            this.c21.Appearance = System.Windows.Forms.Appearance.Button;
-            this.c21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.c21.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.c21.FlatAppearance.BorderSize = 2;
-            this.c21.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.c21.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.c21.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.c21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c21.Location = new System.Drawing.Point(101, 117);
-            this.c21.Name = "c21";
-            this.c21.Size = new System.Drawing.Size(30, 30);
-            this.c21.TabIndex = 10;
-            this.c21.UseVisualStyleBackColor = false;
-            // 
-            // c20
-            // 
-            this.c20.Appearance = System.Windows.Forms.Appearance.Button;
-            this.c20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.c20.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.c20.FlatAppearance.BorderSize = 2;
-            this.c20.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.c20.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.c20.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.c20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c20.Location = new System.Drawing.Point(65, 117);
-            this.c20.Name = "c20";
-            this.c20.Size = new System.Drawing.Size(30, 30);
-            this.c20.TabIndex = 9;
-            this.c20.UseVisualStyleBackColor = false;
             // 
             // c33
             // 
@@ -413,11 +204,243 @@
             this.c30.TabIndex = 13;
             this.c30.UseVisualStyleBackColor = false;
             // 
+            // c23
+            // 
+            this.c23.Appearance = System.Windows.Forms.Appearance.Button;
+            this.c23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.c23.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.c23.FlatAppearance.BorderSize = 2;
+            this.c23.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.c23.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.c23.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.c23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c23.Location = new System.Drawing.Point(173, 117);
+            this.c23.Name = "c23";
+            this.c23.Size = new System.Drawing.Size(30, 30);
+            this.c23.TabIndex = 12;
+            this.c23.UseVisualStyleBackColor = false;
+            // 
+            // c22
+            // 
+            this.c22.Appearance = System.Windows.Forms.Appearance.Button;
+            this.c22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.c22.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.c22.FlatAppearance.BorderSize = 2;
+            this.c22.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.c22.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.c22.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.c22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c22.Location = new System.Drawing.Point(137, 117);
+            this.c22.Name = "c22";
+            this.c22.Size = new System.Drawing.Size(30, 30);
+            this.c22.TabIndex = 11;
+            this.c22.UseVisualStyleBackColor = false;
+            // 
+            // c21
+            // 
+            this.c21.Appearance = System.Windows.Forms.Appearance.Button;
+            this.c21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.c21.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.c21.FlatAppearance.BorderSize = 2;
+            this.c21.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.c21.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.c21.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.c21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c21.Location = new System.Drawing.Point(101, 117);
+            this.c21.Name = "c21";
+            this.c21.Size = new System.Drawing.Size(30, 30);
+            this.c21.TabIndex = 10;
+            this.c21.UseVisualStyleBackColor = false;
+            // 
+            // c20
+            // 
+            this.c20.Appearance = System.Windows.Forms.Appearance.Button;
+            this.c20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.c20.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.c20.FlatAppearance.BorderSize = 2;
+            this.c20.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.c20.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.c20.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.c20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c20.Location = new System.Drawing.Point(65, 117);
+            this.c20.Name = "c20";
+            this.c20.Size = new System.Drawing.Size(30, 30);
+            this.c20.TabIndex = 9;
+            this.c20.UseVisualStyleBackColor = false;
+            // 
+            // c13
+            // 
+            this.c13.Appearance = System.Windows.Forms.Appearance.Button;
+            this.c13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.c13.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.c13.FlatAppearance.BorderSize = 2;
+            this.c13.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.c13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.c13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.c13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c13.Location = new System.Drawing.Point(173, 81);
+            this.c13.Name = "c13";
+            this.c13.Size = new System.Drawing.Size(30, 30);
+            this.c13.TabIndex = 8;
+            this.c13.UseVisualStyleBackColor = false;
+            // 
+            // c12
+            // 
+            this.c12.Appearance = System.Windows.Forms.Appearance.Button;
+            this.c12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.c12.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.c12.FlatAppearance.BorderSize = 2;
+            this.c12.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.c12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.c12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.c12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c12.Location = new System.Drawing.Point(137, 81);
+            this.c12.Name = "c12";
+            this.c12.Size = new System.Drawing.Size(30, 30);
+            this.c12.TabIndex = 7;
+            this.c12.UseVisualStyleBackColor = false;
+            // 
+            // c11
+            // 
+            this.c11.Appearance = System.Windows.Forms.Appearance.Button;
+            this.c11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.c11.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.c11.FlatAppearance.BorderSize = 2;
+            this.c11.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.c11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.c11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.c11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c11.Location = new System.Drawing.Point(101, 81);
+            this.c11.Name = "c11";
+            this.c11.Size = new System.Drawing.Size(30, 30);
+            this.c11.TabIndex = 6;
+            this.c11.UseVisualStyleBackColor = false;
+            // 
+            // c10
+            // 
+            this.c10.Appearance = System.Windows.Forms.Appearance.Button;
+            this.c10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.c10.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.c10.FlatAppearance.BorderSize = 2;
+            this.c10.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.c10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.c10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.c10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c10.Location = new System.Drawing.Point(65, 81);
+            this.c10.Name = "c10";
+            this.c10.Size = new System.Drawing.Size(30, 30);
+            this.c10.TabIndex = 5;
+            this.c10.UseVisualStyleBackColor = false;
+            // 
+            // c03
+            // 
+            this.c03.Appearance = System.Windows.Forms.Appearance.Button;
+            this.c03.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.c03.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.c03.FlatAppearance.BorderSize = 2;
+            this.c03.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.c03.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.c03.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.c03.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c03.Location = new System.Drawing.Point(173, 45);
+            this.c03.Name = "c03";
+            this.c03.Size = new System.Drawing.Size(30, 30);
+            this.c03.TabIndex = 4;
+            this.c03.UseVisualStyleBackColor = false;
+            // 
+            // c02
+            // 
+            this.c02.Appearance = System.Windows.Forms.Appearance.Button;
+            this.c02.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.c02.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.c02.FlatAppearance.BorderSize = 2;
+            this.c02.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.c02.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.c02.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.c02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c02.Location = new System.Drawing.Point(137, 45);
+            this.c02.Name = "c02";
+            this.c02.Size = new System.Drawing.Size(30, 30);
+            this.c02.TabIndex = 3;
+            this.c02.UseVisualStyleBackColor = false;
+            // 
+            // c01
+            // 
+            this.c01.Appearance = System.Windows.Forms.Appearance.Button;
+            this.c01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.c01.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.c01.FlatAppearance.BorderSize = 2;
+            this.c01.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.c01.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.c01.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.c01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c01.Location = new System.Drawing.Point(101, 45);
+            this.c01.Name = "c01";
+            this.c01.Size = new System.Drawing.Size(30, 30);
+            this.c01.TabIndex = 2;
+            this.c01.UseVisualStyleBackColor = false;
+            // 
+            // c00
+            // 
+            this.c00.Appearance = System.Windows.Forms.Appearance.Button;
+            this.c00.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.c00.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.c00.FlatAppearance.BorderSize = 2;
+            this.c00.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.c00.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.c00.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.c00.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c00.Location = new System.Drawing.Point(65, 45);
+            this.c00.Name = "c00";
+            this.c00.Size = new System.Drawing.Size(30, 30);
+            this.c00.TabIndex = 1;
+            this.c00.UseVisualStyleBackColor = false;
+            this.c00.CheckedChanged += new System.EventHandler(this.c00_CheckedChanged);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(531, 289);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "Zatvori";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(337, 294);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(188, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Sve promjene se automatski spremaju.";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(255, 247);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Odaberite boju:";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Red;
+            this.panel2.Location = new System.Drawing.Point(340, 247);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(57, 36);
+            this.panel2.TabIndex = 10;
+            this.panel2.Click += new System.EventHandler(this.panel2_Click);
+            // 
             // UredivanjeOblika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 287);
+            this.ClientSize = new System.Drawing.Size(621, 323);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.panel1);
@@ -465,5 +488,8 @@
         private System.Windows.Forms.CheckBox c00;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

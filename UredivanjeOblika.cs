@@ -69,6 +69,7 @@ namespace Tetris
                     ((CheckBox)r[0]).Checked = o[i, j];
                 }
             }
+            panel2.BackColor = o.Boja;
             prikazivanje_u_tijeku = false;
         }
 
@@ -87,6 +88,7 @@ namespace Tetris
                     o[i, j] = ((CheckBox)r[0]).Checked;
                 }
             }
+            o.Boja = panel2.BackColor;
             Postavke.Pohrani();
         }
 
@@ -140,6 +142,18 @@ namespace Tetris
         private void button4_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void panel2_Click(object sender, EventArgs e)
+        {
+            if (aktivni_oblik != -1)
+            {
+                if (colorDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    panel2.BackColor = colorDialog1.Color;
+                    pohrani();
+                }
+            }
         }
     }
 }

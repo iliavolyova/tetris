@@ -154,10 +154,11 @@ namespace Tetris
         int countdown = 56;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (!igra.GotovaIgra())
+            if (timer1.Enabled && !igra.GotovaIgra())
             {
                 igra.Korak(countdown);
                 label2.Text = igra.Rezultat().ToString();
+
             }
             else
             {
@@ -176,7 +177,6 @@ namespace Tetris
             }
 
             render();
-   
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
