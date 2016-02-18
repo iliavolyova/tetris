@@ -107,5 +107,11 @@ namespace Tetris
             Celije = ret;
         }
 
+        public Brush vratiBrush()
+        {
+            Brush b = new SolidBrush(this.Boja);
+            return b;
+        }
+
     }
 }

@@ -14,6 +14,9 @@ namespace Tetris
     {
         Tetris igra;
         TipIgre tig;
+        Image img;  // tile
+        Image img1; // tile
+        Image img2; // pattern
 
         public PrikazIgre()
         {
@@ -27,6 +30,11 @@ namespace Tetris
 
             //tig.Nivoi[igra.trenutni_nivo].ViseLikova = true;
 
+            //ucitavanje
+            img = new Bitmap(Properties.Resources.tile_mask);
+            img1 = new Bitmap(Properties.Resources.tile_mask);
+            img2 = new Bitmap(Properties.Resources.pattern);
+
             InitializeComponent();
 
             //velicina kockice
@@ -39,6 +47,12 @@ namespace Tetris
             this.ClientSize = new Size(((tig.Stupaca + 2) * velicina) + 300, ((tig.Redaka + 2) * velicina) + 20);
             this.panel1.Width = (tig.Stupaca + 2) * velicina;
             this.panel1.Height = (tig.Redaka + 2) * velicina;
+
+            //resize bitmapa
+            img1 = (Image)new Bitmap(img1, new Size(panelSljedeciPrvi.Width / 4, panelSljedeciPrvi.Height / 4));
+            img = (Image)new Bitmap(img, new Size(panel1.Width / (tig.Stupaca + 2), panel1.Height / (tig.Redaka + 2)));
+            img2 = (Image)new Bitmap(img2, new Size(panel1.Width / (tig.Stupaca + 2), panel1.Height / (tig.Redaka + 2)));
+
 
             //label color
             this.label1.ForeColor = System.Drawing.ColorTranslator.FromHtml("#282d34");
@@ -66,14 +80,10 @@ namespace Tetris
         void render(Panel pan, Oblik o, Brush p)
         {
             Bitmap bm = new Bitmap(pan.Size.Width, pan.Size.Height);
-
-            Image img = new Bitmap(Properties.Resources.tile_mask);
             Graphics g = Graphics.FromImage(bm);
 
             int w = (pan.Width) / (4);
             int h = (pan.Height) / (4);
-
-            img = (Image)new Bitmap(img, new Size(w, h));
 
             if (o != null)
                  for (int r = 0; r < 4; ++r)
@@ -82,12 +92,12 @@ namespace Tetris
                      {
                         if (o[r, s])
                         {
-                            g.FillRectangle(p, new Rectangle(new Point((s * w)+1, (r * h)+1), new Size(w-2, h-2)));
+                            g.FillRectangle(p, new Rectangle(new Point((s * w)+1, (r * h)+1), new Size(w - 3, h - 3)));
                             g.DrawImage(img, new Point(s * w, r * h));
                         }
                      }
                  }
-            pan.BackgroundImage = bm;
+           pan.BackgroundImage = bm;
         }
 
         void render()
@@ -95,17 +105,11 @@ namespace Tetris
             Tetris.Kvadrat[,] ploca = igra.StanjePloce();
             Bitmap bm = new Bitmap(panel1.Size.Width, panel1.Size.Height);
             Graphics g = Graphics.FromImage(bm);
-
-            Image img = new Bitmap(Properties.Resources.tile_mask);
-            Image img1 = new Bitmap(Properties.Resources.pattern);
-
+            
             g.Clear(Color.White);
 
             int w = panel1.Width / (tig.Stupaca + 2);
             int h = panel1.Height / (tig.Redaka + 2);
-
-            img = (Image)new Bitmap(img, new Size(w, h));
-            img1 = (Image)new Bitmap(img1, new Size(w, h));
 
             for (int r = 0; r < tig.Redaka + 2; ++r)
             {
@@ -115,11 +119,11 @@ namespace Tetris
                     switch (ploca[r, s])
                     {
                         case Tetris.Kvadrat.OkupiraPrviLik:
-                            //  p = igra.SljedeciOblik().Boja;
+                            p = igra.SljedeciOblik().vratiBrush();
                             p = Brushes.Yellow;
                             break;
                         case Tetris.Kvadrat.DeaktiviraniPrvi:
-                            //   p = igra.SljedeciOblik().Boja;
+                            p = igra.SljedeciOblik().vratiBrush();
                             p = Brushes.Yellow;
                             break;
                         case Tetris.Kvadrat.OkupiraPrepreka:
@@ -139,11 +143,11 @@ namespace Tetris
                     }
                     if (ploca[r, s] != 0)
                     {
-                        g.FillRectangle(p, new Rectangle(new Point((s * w) + 1, (r * h) + 1), new Size(w - 2, h - 2)));
+                        g.FillRectangle(p, new Rectangle(new Point((s * w) + 1, (r * h) + 1), new Size(w - 3, h - 3)));
                         g.DrawImage(img, new Point(s * w, r * h));
                     }
                     else
-                        g.DrawImage(img1, new Point(s * w, r * h));
+                        g.DrawImage(img2, new Point(s * w, r * h));
                 }
             }
 
