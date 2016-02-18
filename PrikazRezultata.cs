@@ -20,6 +20,7 @@ namespace Tetris
             set
             {
                 _tipigre = value;
+                listView1.Items.Clear();
                 foreach (var rez in Postavke.RezultatiZa(value))
                     listView1.Items.Add(new ListViewItem(new string[]{
                         rez.Item2.ToString(), rez.Item3.ToString(), rez.Item1.ToString()

@@ -33,6 +33,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lbl_brzina = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panelSljedeciDrugi = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -46,7 +47,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbl_rez = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lbl_brzina = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -106,6 +106,19 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(220, 530);
             this.panel2.TabIndex = 1;
+            // 
+            // lbl_brzina
+            // 
+            this.lbl_brzina.AutoSize = true;
+            this.lbl_brzina.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_brzina.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbl_brzina.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.lbl_brzina.Location = new System.Drawing.Point(100, 75);
+            this.lbl_brzina.Margin = new System.Windows.Forms.Padding(10);
+            this.lbl_brzina.Name = "lbl_brzina";
+            this.lbl_brzina.Size = new System.Drawing.Size(109, 25);
+            this.lbl_brzina.TabIndex = 8;
+            this.lbl_brzina.Text = "Brzina: 1x";
             // 
             // panel7
             // 
@@ -247,19 +260,6 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Rezultat";
             // 
-            // lbl_brzina
-            // 
-            this.lbl_brzina.AutoSize = true;
-            this.lbl_brzina.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_brzina.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbl_brzina.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.lbl_brzina.Location = new System.Drawing.Point(100, 75);
-            this.lbl_brzina.Margin = new System.Windows.Forms.Padding(10);
-            this.lbl_brzina.Name = "lbl_brzina";
-            this.lbl_brzina.Size = new System.Drawing.Size(109, 25);
-            this.lbl_brzina.TabIndex = 8;
-            this.lbl_brzina.Text = "Brzina: 1x";
-            // 
             // PrikazIgre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,6 +269,7 @@
             this.Name = "PrikazIgre";
             this.ShowIcon = false;
             this.Text = "Tetris";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PrikazIgre_FormClosed);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PrikazIgre_KeyDown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

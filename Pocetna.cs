@@ -31,6 +31,7 @@ namespace Tetris
         {
             string tig = ((PrikazRezultata)((Button)sender).Parent).tipigre;
             new PrikazIgre(Postavke.TipoviIgara.Find(t => t.Ime == tig)).ShowDialog();
+            ((PrikazRezultata)tabControl1.SelectedTab.Controls[0]).tipigre = tig; // reload rezultata
         }
 
         private void Form1_Load(object sender, EventArgs e)

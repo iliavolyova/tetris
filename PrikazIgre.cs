@@ -107,6 +107,9 @@ namespace Tetris
             typeof(Panel).InvokeMember("DoubleBuffered",
                   BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
                   null, panelSljedeciDrugi, new object[] { true });
+
+            tableLayoutPanel1.BackgroundImage = null;
+            tableLayoutPanel1.BackColor = Color.DarkSeaGreen;
         }
 
         void render(Panel pan, Oblik o, Brush p)
@@ -138,7 +141,7 @@ namespace Tetris
             Bitmap bm = new Bitmap(bit);
             Graphics g = Graphics.FromImage(bm);
             
-            g.Clear(Color.White);
+            //g.Clear(Color.White);
 
             int w = panel1.Width / (tig.Stupaca + 2);
             int h = panel1.Height / (tig.Redaka + 2);
@@ -151,11 +154,11 @@ namespace Tetris
                     switch (ploca[r, s])
                     {
                         case Tetris.Kvadrat.OkupiraPrviLik:
-                            p = igra.SljedeciOblik().vratiBrush();
-                            p = Brushes.Yellow;
+                            p = igra.aktivniOblikPrvi.vratiBrush();
+                            //p = Brushes.Yellow;
                             break;
                         case Tetris.Kvadrat.DeaktiviraniPrvi:
-                            p = igra.SljedeciOblik().vratiBrush();
+                            //p = igra.SljedeciOblik().vratiBrush();
                             p = Brushes.Yellow;
                             break;
                         case Tetris.Kvadrat.OkupiraPrepreka:
@@ -173,13 +176,14 @@ namespace Tetris
                         default:
                             break;
                     }
-                    if (ploca[r, s] != 0)
+                    
+                    if (! new Tetris.Kvadrat[] { Tetris.Kvadrat.OkupiraPrepreka, Tetris.Kvadrat.Slobodan }.Contains(ploca[r, s]))
                     {
                         g.FillRectangle(p, new Rectangle(new Point((s * w) + 1, (r * h) + 1), new Size(w - 3, h - 3)));
                         g.DrawImage(img, new Point(s * w, r * h));
+
+                        //g.DrawImage(img2, new Point(s * w, r * h));
                     }
-                    else
-                        g.DrawImage(img2, new Point(s * w, r * h));
                 }
             }
 
@@ -189,62 +193,63 @@ namespace Tetris
 
             //ako imamo dvostruki lik
             if (tig.Nivoi[igra.trenutni_nivo].ViseLikova == true)
-                render(panelSljedeciDrugi, igra.sljedeciOblikDrugi, Brushes.DarkGreen);
+                render(panelSljedeciDrugi, igra.sljedeciOblikDrugi, Brushes.DarkGreen); 
         }
 
         int countdown = 56;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (timer1.Enabled && !igra.GotovaIgra())
+            if (!timer1.Enabled || igra.GotovaIgra())
             {
-                igra.Korak(countdown);
-                lbl_rez.Text = igra.Rezultat().ToString();
-                lbl_bonus.Text = igra.NagradnihBodova().ToString();
-                lbl_nivo.Text = "Nivo: " + (igra.trenutni_nivo + 1);
-                lbl_brzina.Text = "Brzina: " + (tig.Nivoi[igra.trenutni_nivo].Brzina) + "x";
+                Close();
+                return;
+            }
 
-                switch (tig.Nivoi[igra.trenutni_nivo].Smjer)
-                {
-                    case Smjerovi.Dolje:
-                        pictureBox1.Image = Properties.Resources.smjer_dolje;
-                        break;
-                    case Smjerovi.Desno:
-                        pictureBox1.Image = Properties.Resources.smjer_desno;
-                        break;
-                    case Smjerovi.Lijevo:
-                        pictureBox1.Image = Properties.Resources.smjer_lijevo;
-                        break;
-                    case Smjerovi.Gore:
-                        pictureBox1.Image = Properties.Resources.smjer_gore;
-                        break;
-                }
+            
+            igra.Korak(countdown);
+            if (igra.GotovaIgra())
+                return;
+            lbl_rez.Text = igra.Rezultat().ToString();
+            lbl_bonus.Text = igra.NagradnihBodova().ToString();
+            lbl_nivo.Text = "Nivo: " + (igra.trenutni_nivo + 1);
+            lbl_brzina.Text = "Brzina: " + (tig.Nivoi[igra.trenutni_nivo].Brzina) + "x";
 
-                if (tig.Nivoi[igra.trenutni_nivo].ViseLikova == true)
-                {
-                    panel7.Visible = true;
-                    panelSljedeciDrugi.Visible = true;
-                    pictureBox1.Location = new Point(pictureBox1.Location.X, panel7.Location.Y + 140);
-                    if (this.ClientSize.Height < 580)
-                    {
-                        this.ClientSize = new Size(this.ClientSize.Width, 580);
-                    }
-                }
-                else
-                {
-                    panel7.Visible = false;
-                    panelSljedeciDrugi.Visible = false;
-                    pictureBox1.Location = new Point(pictureBox1.Location.X, panel7.Location.Y);
-                    if (this.ClientSize.Height < pictureBox1.Location.Y + 70)
-                    {
-                        this.ClientSize = new Size(this.ClientSize.Width, pictureBox1.Location.Y + 70);
-                    }
-                }
+            switch (tig.Nivoi[igra.trenutni_nivo].Smjer)
+            {
+                case Smjerovi.Dolje:
+                    pictureBox1.Image = Properties.Resources.smjer_dolje;
+                    break;
+                case Smjerovi.Desno:
+                    pictureBox1.Image = Properties.Resources.smjer_desno;
+                    break;
+                case Smjerovi.Lijevo:
+                    pictureBox1.Image = Properties.Resources.smjer_lijevo;
+                    break;
+                case Smjerovi.Gore:
+                    pictureBox1.Image = Properties.Resources.smjer_gore;
+                    break;
+            }
 
+            if (tig.Nivoi[igra.trenutni_nivo].ViseLikova == true)
+            {
+                panel7.Visible = true;
+                panelSljedeciDrugi.Visible = true;
+                pictureBox1.Location = new Point(pictureBox1.Location.X, panel7.Location.Y + 140);
+                if (this.ClientSize.Height < 580)
+                {
+                    this.ClientSize = new Size(this.ClientSize.Width, 580);
+                }
             }
             else
             {
-                timer1.Enabled = false;
-            }       
+                panel7.Visible = false;
+                panelSljedeciDrugi.Visible = false;
+                pictureBox1.Location = new Point(pictureBox1.Location.X, panel7.Location.Y);
+                if (this.ClientSize.Height < pictureBox1.Location.Y + 70)
+                {
+                    this.ClientSize = new Size(this.ClientSize.Width, pictureBox1.Location.Y + 70);
+                }
+            }
 
             countdown--;
             if (countdown == 0)
@@ -302,5 +307,12 @@ namespace Tetris
             }
         }
 
+        private void PrikazIgre_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            timer1.Stop();
+            timer1.Enabled = false;
+            timer1.Dispose();
+            timer1 = null;
+        }
     }
 }

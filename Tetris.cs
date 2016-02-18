@@ -112,6 +112,7 @@ namespace Tetris
             if (tip_igre.Nivoi.Count <= trenutni_nivo)
             {
                 gotovaIgra = true;
+                PohraniRezultat();
             }
             else
             {
@@ -121,10 +122,6 @@ namespace Tetris
 
         public bool GotovaIgra()
         {
-            if (gotovaIgra)
-            {
-                PohraniRezultat();
-            }
             return gotovaIgra;
         }
 
@@ -166,10 +163,11 @@ namespace Tetris
         {
             if (countdown % 4 == 0 && countdown / 4 <= Nivo().Brzina)
             {
-                if (gotovaIgra == false)
+                if (!gotovaIgra)
                 {
                     gravitacijaAktivni(Kvadrat.OkupiraPrviLik);
-                    pocistiPopunjeno();
+                    if (!gotovaIgra)
+                        pocistiPopunjeno();
                 }
             }
         }
