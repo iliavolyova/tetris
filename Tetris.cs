@@ -311,6 +311,7 @@ namespace Tetris
                             if (ploca[i, j] != Kvadrat.Slobodan) return false;
                             ploca[i, j] = aktivniOblikPrvi.Celije[k, l] ? kojiLik : ploca[i, j];
                         }
+                    aktivniOblikPrvi.Pozicija = new Tuple<int, int>(tip_igre.Redaka-1, tip_igre.Stupaca / 2 - 2);
                     break;
                 case Smjerovi.Desno:
                     for (int i = tip_igre.Redaka / 2 - 2, k = 0; i < tip_igre.Redaka / 2 + 2; ++i, ++k)
@@ -318,7 +319,8 @@ namespace Tetris
                         {
                             if (ploca[i, j] != Kvadrat.Slobodan) return false;
                             ploca[i, j] = aktivniOblikPrvi.Celije[k, l] ? kojiLik : ploca[i, j];
-                        }             
+                        }
+                    aktivniOblikPrvi.Pozicija = new Tuple<int, int>(tip_igre.Redaka/2 -2, 1);
                     break;
                 case Smjerovi.Lijevo:
                 default:
@@ -328,6 +330,7 @@ namespace Tetris
                             if (ploca[i, j] != Kvadrat.Slobodan) return false;
                             ploca[i, j] = aktivniOblikPrvi.Celije[k, l] ? kojiLik : ploca[i, j];
                         }
+                    aktivniOblikPrvi.Pozicija = new Tuple<int, int>(tip_igre.Redaka / 2 - 2, tip_igre.Stupaca-1);
                     break;
             }
             return true;
@@ -383,11 +386,12 @@ namespace Tetris
             switch (Nivo().Smjer)
             {
                 case Smjerovi.Dolje:
+                case Smjerovi.Gore:
                     for (int i = 1; i < tip_igre.Redaka + 1; ++i){
                         bool isFull = true;
                         for (int j = 1; j < tip_igre.Stupaca + 1; ++j)
                         {
-                            if (ploca[i, j] != Kvadrat.DeaktiviraniPrvi && ploca[i, j] != Kvadrat.DeaktiviraniPrvi)
+                            if (ploca[i, j] != Kvadrat.DeaktiviraniPrvi && ploca[i, j] != Kvadrat.DeaktiviraniDrugi)
                                 isFull = false;
                         }
                         if (isFull)
@@ -396,11 +400,26 @@ namespace Tetris
                             pribrojiBodove(bonusMultiplier);
                             bonusMultiplier += 0.05 * Nivo().Brzina;
                         }
-                            
-                        
                     }
                     break;
-                        
+                case Smjerovi.Lijevo:
+                case Smjerovi.Desno:
+                    for (int i = 1; i < tip_igre.Stupaca + 1; ++i)
+                    {
+                        bool isFull = true;
+                        for (int j = 1; j < tip_igre.Redaka + 1; ++j)
+                        {
+                            if (ploca[j, i] != Kvadrat.DeaktiviraniPrvi && ploca[j, i] != Kvadrat.DeaktiviraniDrugi)
+                                isFull = false;
+                        }
+                        if (isFull)
+                        {
+                            pomakniDeaktivirano(i);
+                            pribrojiBodove(bonusMultiplier);
+                            bonusMultiplier += 0.05 * Nivo().Brzina;
+                        }
+                    }
+                    break;       
             }
         }
 
@@ -417,6 +436,36 @@ namespace Tetris
                             else
                                 ploca[i, j] = Kvadrat.Slobodan;
                         }
+                    break;
+                case Smjerovi.Gore:
+                    for (int i = iznad; i < tip_igre.Redaka + 1; ++i)
+                        for (int j = 1; j < tip_igre.Stupaca + 1; ++j)
+                        {
+                            if (ploca[i + 1, j] == Kvadrat.DeaktiviraniPrvi || ploca[i + 1, j] == Kvadrat.DeaktiviraniDrugi)
+                                ploca[i, j] = ploca[i + 1, j];
+                            else
+                                ploca[i, j] = Kvadrat.Slobodan;
+                        }
+                    break;
+                case Smjerovi.Lijevo:
+                    for (int i = iznad; i < tip_igre.Stupaca + 1; ++i)
+                        for (int j = 1; j < tip_igre.Redaka + 1; ++j)
+                        {
+                            if (ploca[j, i + 1] == Kvadrat.DeaktiviraniPrvi || ploca[j, i + 1] == Kvadrat.DeaktiviraniDrugi)
+                                ploca[j, i] = ploca[j, i + 1];
+                            else
+                                ploca[j, i] = Kvadrat.Slobodan;
+                        }
+                    break;
+                case Smjerovi.Desno:
+                    for (int i = iznad; i > 0; --i)
+                            for (int j = 1; j < tip_igre.Redaka + 1; ++j)
+                            {
+                                if (ploca[j, i - 1] == Kvadrat.DeaktiviraniPrvi || ploca[j, i - 1] == Kvadrat.DeaktiviraniDrugi)
+                                    ploca[j, i] = ploca[j, i - 1];
+                                else
+                                    ploca[j, i] = Kvadrat.Slobodan;
+                            }
                     break;
             }
         }
