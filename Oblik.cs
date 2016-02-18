@@ -68,7 +68,7 @@ namespace Tetris
         {
             Ime = x.Attribute("ime").Value;
             celije_iz_stringa(x.Attribute("celije").Value);
-            //Boja = Color.FromArgb(int.Parse(x.Attribute("boja").Value));
+            Boja = Color.FromArgb(int.Parse(x.Attribute("boja").Value));
         }
 
 
