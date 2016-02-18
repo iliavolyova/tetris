@@ -18,6 +18,10 @@ namespace Tetris
         Image img1; // tile
         Image img2; // pattern
 
+        //proba
+        Bitmap bit;
+        Bitmap bit_sljedeci;
+
         public PrikazIgre()
         {
             InitializeComponent();
@@ -53,6 +57,34 @@ namespace Tetris
             img = (Image)new Bitmap(img, new Size(panel1.Width / (tig.Stupaca + 2), panel1.Height / (tig.Redaka + 2)));
             img2 = (Image)new Bitmap(img2, new Size(panel1.Width / (tig.Stupaca + 2), panel1.Height / (tig.Redaka + 2)));
 
+            //bitmap
+            bit = new Bitmap(panel1.Size.Width, panel1.Size.Height);
+            Graphics g = Graphics.FromImage(bit);
+
+            g.Clear(Color.White);
+
+            int w = panel1.Width / (tig.Stupaca + 2);
+            int h = panel1.Height / (tig.Redaka + 2);
+
+            for (int r = 0; r < tig.Redaka + 2; ++r)
+            {
+                for (int s = 0; s < tig.Stupaca + 2; ++s)
+                {
+                    if (r == 0 || s == 0 || r == (tig.Redaka + 1) || s == (tig.Stupaca + 1))
+                    {
+                        g.FillRectangle(Brushes.DarkGray, new Rectangle(new Point((s * w) + 1, (r * h) + 1), new Size(w - 3, h - 3)));
+                        g.DrawImage(img, new Point(s * w, r * h));
+                    }
+                    else
+                    {
+                        g.DrawImage(img2, new Point(s * w, r * h));
+                    }
+                }
+            }
+            panel1.BackgroundImage = bit;
+            
+            //Bitmap sljedeci
+            bit_sljedeci = new Bitmap(panelSljedeciPrvi.Size.Width, panelSljedeciPrvi.Size.Height);
 
             //label color
             this.label1.ForeColor = System.Drawing.ColorTranslator.FromHtml("#282d34");
@@ -79,7 +111,7 @@ namespace Tetris
 
         void render(Panel pan, Oblik o, Brush p)
         {
-            Bitmap bm = new Bitmap(pan.Size.Width, pan.Size.Height);
+            Bitmap bm = new Bitmap(bit_sljedeci);
             Graphics g = Graphics.FromImage(bm);
 
             int w = (pan.Width) / (4);
@@ -103,7 +135,7 @@ namespace Tetris
         void render()
         {
             Tetris.Kvadrat[,] ploca = igra.StanjePloce();
-            Bitmap bm = new Bitmap(panel1.Size.Width, panel1.Size.Height);
+            Bitmap bm = new Bitmap(bit);
             Graphics g = Graphics.FromImage(bm);
             
             g.Clear(Color.White);
@@ -221,11 +253,6 @@ namespace Tetris
             }
 
             render();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-           // render();
         }
 
         private void PrikazIgre_KeyDown(object sender, KeyEventArgs e)
