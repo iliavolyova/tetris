@@ -11,7 +11,7 @@ namespace Tetris
         TipIgre tip_igre;
         Kvadrat[,] ploca;
 
-        int trenutni_nivo { get; set; }
+        public int trenutni_nivo { get; set; }
         int rezultat { get; set; }
         int nagradni_bodovi { get; set; }
 
