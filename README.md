@@ -59,12 +59,12 @@ Sama forma podijeljena je na dva dijela. U lijevom dijelu forme nalazi se glavni
 Glavni panel, koji nam služi za crtanje stanja igre, mijenja veličinu ovisno o broju redaka i stupaca koje su zadane za neku vrstu igre. Sastavljen je od niza kvadratića veličine 24px ili manje, na način da slobodno polje prikazujemo kao gotov uzorak, dok ostala polja ovisno jesu li zauzeta od strane nekog oblika ili prepreke crtamo na način da prvo kreiramo kvadrat određene boje a zatim na njega nacrtamo još i „uzorak“ (okvir).
 
 ## Slike sučelja
- 1. Početni zaslon
+ 1. Početni zaslon <br />
     ![Screenshot](/doc/pocetna.png "Screenshot")
- 2. Prikaz igre
+ 2. Prikaz igre <br />
     ![Screenshot](/doc/prikaz_igre.png "Screenshot")
- 3. Uređivanje tipova
+ 3. Uređivanje tipova <br />
     ![Screenshot](/doc/uredivanje_tipova.png "Screenshot")
- 4. Uređivanje oblika
+ 4. Uređivanje oblika <br />
     ![Screenshot](/doc/uredivanje_oblika.png "Screenshot")
 
