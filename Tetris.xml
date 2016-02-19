@@ -2,45 +2,91 @@
 <tetris>
   <igra ime="Klasična" redaka="20" stupaca="10">
     <nivo id="1" brzina="1" nagradnikvadratici="false" viselikova="false" smjer="Dolje" prepreke="false">
-      <oblik ime="I" celije="1000100010001000" boja="-16777088" />
-      <oblik ime="L" celije="1000110000000000" boja="-16711936" />
+      <oblik ime="I" celije="1111000000000000" boja="-32513" />
+      <oblik ime="L" celije="0011001000100000" boja="-16744448" />
+      <oblik ime="_|" celije="0000100010001100" boja="-16744448" />
+      <oblik ime="[]" celije="0000011001100000" boja="-8388353" />
+      <oblik ime="4" celije="0010011001000000" boja="-32768" />
+      <oblik ime="-4" celije="0000010001100010" boja="-32768" />
+      <oblik ime="T" celije="0000010011100000" boja="-16711681" />
     </nivo>
     <nivo id="2" brzina="2" nagradnikvadratici="false" viselikova="false" smjer="Dolje" prepreke="false">
-      <oblik ime="I" celije="1000100010001000" boja="-16777088" />
-      <oblik ime="L" celije="1000110000000000" boja="-16711936" />
+      <oblik ime="I" celije="1111000000000000" boja="-32513" />
+      <oblik ime="L" celije="0011001000100000" boja="-16744448" />
+      <oblik ime="_|" celije="0000100010001100" boja="-16744448" />
+      <oblik ime="[]" celije="0000011001100000" boja="-8388353" />
+      <oblik ime="4" celije="0010011001000000" boja="-32768" />
+      <oblik ime="-4" celije="0000010001100010" boja="-32768" />
+      <oblik ime="T" celije="0000010011100000" boja="-16711681" />
     </nivo>
     <nivo id="3" brzina="3" nagradnikvadratici="false" viselikova="false" smjer="Dolje" prepreke="false">
-      <oblik ime="I" celije="1000100010001000" boja="-16777088" />
-      <oblik ime="L" celije="1000110000000000" boja="-16711936" />
+      <oblik ime="I" celije="1111000000000000" boja="-32513" />
+      <oblik ime="L" celije="0011001000100000" boja="-16744448" />
+      <oblik ime="_|" celije="0000100010001100" boja="-16744448" />
+      <oblik ime="[]" celije="0000011001100000" boja="-8388353" />
+      <oblik ime="4" celije="0010011001000000" boja="-32768" />
+      <oblik ime="-4" celije="0000010001100010" boja="-32768" />
+      <oblik ime="T" celije="0000010011100000" boja="-16711681" />
     </nivo>
   </igra>
   <igra ime="Specijalna" redaka="20" stupaca="10">
-    <nivo id="1" brzina="1" nagradnikvadratici="true" viselikova="false" smjer="Dolje" prepreke="false">
-      <oblik ime="I" celije="1000100010001000" boja="-16777088" />
-      <oblik ime="L" celije="1000110000000000" boja="-16711936" />
+    <nivo id="1" brzina="1" nagradnikvadratici="true" viselikova="false" smjer="Lijevo" prepreke="false">
+      <oblik ime="I" celije="1111000000000000" boja="-32513" />
+      <oblik ime="L" celije="0011001000100000" boja="-16744448" />
+      <oblik ime="_|" celije="0000100010001100" boja="-16744448" />
+      <oblik ime="[]" celije="0000011001100000" boja="-8388353" />
+      <oblik ime="4" celije="0010011001000000" boja="-32768" />
+      <oblik ime="-4" celije="0000010001100010" boja="-32768" />
+      <oblik ime="T" celije="0000010011100000" boja="-16711681" />
+      <oblik ime="X" celije="0010011100100000" boja="-65536" />
     </nivo>
     <nivo id="2" brzina="2" nagradnikvadratici="true" viselikova="false" smjer="Gore" prepreke="true">
-      <oblik ime="I" celije="1000100010001000" boja="-16777088" />
-      <oblik ime="L" celije="1000110000000000" boja="-16711936" />
+      <oblik ime="I" celije="1111000000000000" boja="-32513" />
+      <oblik ime="L" celije="0011001000100000" boja="-16744448" />
+      <oblik ime="_|" celije="0000100010001100" boja="-16744448" />
+      <oblik ime="[]" celije="0000011001100000" boja="-8388353" />
+      <oblik ime="4" celije="0010011001000000" boja="-32768" />
+      <oblik ime="-4" celije="0000010001100010" boja="-32768" />
+      <oblik ime="T" celije="0000010011100000" boja="-16711681" />
+      <oblik ime="X" celije="0010011100100000" boja="-65536" />
     </nivo>
     <nivo id="3" brzina="3" nagradnikvadratici="true" viselikova="true" smjer="Lijevo" prepreke="true">
-      <oblik ime="I" celije="1000100010001000" boja="-16777088" />
-      <oblik ime="L" celije="1000110000000000" boja="-16711936" />
+      <oblik ime="I" celije="1111000000000000" boja="-32513" />
+      <oblik ime="L" celije="0011001000100000" boja="-16744448" />
+      <oblik ime="_|" celije="0000100010001100" boja="-16744448" />
+      <oblik ime="[]" celije="0000011001100000" boja="-8388353" />
+      <oblik ime="4" celije="0010011001000000" boja="-32768" />
+      <oblik ime="-4" celije="0000010001100010" boja="-32768" />
+      <oblik ime="T" celije="0000010011100000" boja="-16711681" />
+      <oblik ime="X" celije="0010011100100000" boja="-65536" />
     </nivo>
   </igra>
   <igra ime="NoviTip" redaka="8" stupaca="8">
     <nivo id="0" brzina="1" nagradnikvadratici="false" viselikova="false" smjer="Dolje" prepreke="false">
-      <oblik ime="I" celije="1000100010001000" boja="-16777088" />
-      <oblik ime="L" celije="1000110000000000" boja="-16711936" />
+      <oblik ime="vinko" celije="1111111111111111" boja="-65536" />
     </nivo>
-    <nivo id="1" brzina="1" nagradnikvadratici="false" viselikova="false" smjer="Dolje" prepreke="false" />
-    <nivo id="2" brzina="1" nagradnikvadratici="false" viselikova="false" smjer="Dolje" prepreke="false" />
+    <nivo id="1" brzina="1" nagradnikvadratici="false" viselikova="false" smjer="Dolje" prepreke="false">
+      <oblik ime="vinko" celije="1111111111111111" boja="-65536" />
+    </nivo>
+    <nivo id="2" brzina="1" nagradnikvadratici="false" viselikova="false" smjer="Dolje" prepreke="false">
+      <oblik ime="vinko" celije="1111111111111111" boja="-65536" />
+    </nivo>
   </igra>
-  <oblik ime="I" celije="1000100010001000" boja="-16777088" />
-  <oblik ime="L" celije="1000110000000000" boja="-16711936" />
-  <oblik ime="Moj Oblik" celije="1001100101101001" boja="-65536" />
+  <oblik ime="I" celije="1111000000000000" boja="-32513" />
+  <oblik ime="L" celije="0011001000100000" boja="-16744448" />
+  <oblik ime="_|" celije="0000100010001100" boja="-16744448" />
+  <oblik ime="[]" celije="0000011001100000" boja="-8388353" />
+  <oblik ime="4" celije="0010011001000000" boja="-32768" />
+  <oblik ime="-4" celije="0000010001100010" boja="-32768" />
+  <oblik ime="T" celije="0000010011100000" boja="-16711681" />
+  <oblik ime="X" celije="0010011100100000" boja="-65536" />
+  <oblik ime="vinko" celije="1111111111111111" boja="-65536" />
   <rezultat tipigre="Klasična" igrac="luka" nivo="3" bodovi="9001" />
-  <rezultat tipigre="Klasična" igrac="goran" nivo="1" bodovi="10" />
   <rezultat tipigre="Klasična" igrac="bojan" nivo="1" bodovi="10" />
+  <rezultat tipigre="Klasična" igrac="goran" nivo="1" bodovi="10" />
   <rezultat tipigre="Klasična" igrac="vinko" nivo="1" bodovi="-2" />
+  <rezultat tipigre="NoviTip" igrac="Malo Bolji Igrac" nivo="3" bodovi="42" />
+  <rezultat tipigre="NoviTip" igrac="jakolosigrac" nivo="3" bodovi="0" />
+  <rezultat tipigre="NoviTip" igrac="losigrac" nivo="3" bodovi="0" />
+  <rezultat tipigre="Specijalna" igrac="netko" nivo="3" bodovi="0" />
 </tetris>

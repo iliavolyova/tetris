@@ -12,19 +12,19 @@
 
 
 ## Zahtjevi
-Radi se o dobro poznatoj igri Tetris. Ovdje navodimo specifičnosti ove implementacije.
+Radi se o dobro poznatoj igri Tetris. Ovdje navodimo posebnosti ove implementacije.
 
  * Korisnik ima mogućnost definiranja igre (za svaki nivo odvojeno):
-   * Moguć odabir likova s kojima će se igrati.
+   * Moguć odabir likova s kojima će se igrati
    * Definiranje nestandardnih likova 
-   * Manje prepreke koje povremeno mijenjaju mjesto. 
-   * Na nekom nivou u isto vrijeme spuštaju po dva lika,
-   * Na pozadini se pojavljuju nagradni kvadratići. 
+   * Manje prepreke koje povremeno mijenjaju mjesto
+   * Istovremeno spuštanje po dva lika
+   * Nagradni kvadratići
    * Brzina padanja
- * Iskorištavanje dodatnih bodova nagradnih kvadratića:
-   * Lik se u nekom trenutku pomakne nekoliko redaka prema gore.
+ * Iskorištavanje dodatnih bodova dobivenih nagradnim kvadratićima:
+   * Lik se u nekom trenutku pomakne nekoliko redaka prema gore
  * Omogućena promjena pogleda na igru, npr. likovi se kreću prema gore
- * Za određen tip igre, treba prikazati popis najboljih dosadašnjih rezultata.
+ * Za određen tip igre, prikaz najboljih dosadašnjih rezultata
 
 ## Organizacija
 
@@ -33,7 +33,8 @@ Igru su izradili (studenti 2. godine diplomskog studija Računarstvo i Matematik
 Koristili smo C# i WinForms API .NET-a. Za izradu smo koristili Visual Studio, a za verzioniranje Git. 
 
 Zajedničke klase, forme za uređivanje i prikaz igara, oblika i rezultata, te upravljanje konfiguracijom je napravio Luka Mikec. 
-Logiku igre (*engine*) koja uključuje i ranije navedene posebnosti je implementirao Bojan Popović. Formu za prikaz igre uključno s dizajnom grafičkih elemenata je izradio Goran Gosarić.
+Logiku igre (*engine*) koja uključuje i ranije navedene posebnosti je implementirao Bojan Popović. 
+Formu za prikaz igre uključno s dizajnom grafičkih elemenata je izradio Goran Gosarić.
 
 
 ## Opis dijelova
@@ -49,7 +50,7 @@ Od ostalih formi možda je zanimljivo izdvojiti dizajn ćelija oblika na formi U
 
 ### Logika igre (B. P.)
 
-Kada se odabere konfiguracija, korisničko sučelje instancira objekt igre, tj. klasu Tetris. Konstruktor prima slijed odabranih nivoa, te njihove posebnosti ovisno o tome kakav je tip igre odabran (sve je sadržano u objektu TipIgre). Također, stvara se centralni dio ove klase: dvodimenzionalno polje *ploca* na kojem je prikazano trenutno stanje igre. Korisničko sučelje nakon toga aktivira *timer* koji u klasi Tetris periodično zove metodu Korak. Ova metoda, ovisno o brzini trenutnog nivoa odlučuje hoće li se stvarno dogoditi korak u životnom ciklusu igre, ili se neće dogoditi ništa. Ako se treba dogoditi korak, poziva se privatna metoda gravitacijaAktivni čiji je zadatak spustiti sve aktivne likove u smjeru u kojem je definirano padanje likova u trenutnom nivou.
+Kada se odabere konfiguracija, korisničko sučelje instancira objekt igre, tj. klasu Tetris. Konstruktor prima slijed odabranih nivoa, te njihove posebnosti ovisno o tome kakav je tip igre odabran (sve je sadržano u objektu TipIgre). Također, stvara se centralni dio ove klase: dvodimenzionalno polje *ploca* na kojem je prikazano trenutno stanje igre. Korisničko sučelje nakon toga aktivira *timer* koji u klasi Tetris periodično zove metodu Korak. Ova metoda, ovisno o brzini trenutnog nivoa odlučuje hoće li se stvarno dogoditi korak u životnom ciklusu igre, ili se ništa neće dogoditi. Ako se treba dogoditi korak, poziva se privatna metoda gravitacijaAktivni čiji je zadatak spustiti sve aktivne likove u smjeru u kojem je definirano padanje likova u trenutnom nivou.
 
 Prije svake kretnje aktivnih likova (pomaka, rotacije, ili gravitacije), *engine* prvo simulira navedenu akciju i gleda jesu li polja na ploči gdje bi se lik trebao naći u idućem koraku slobodna. U slučaju gravitacije, ako se lik ne može pomaknuti, on postaje deaktiviran. Ako nema aktivnih likova, inicijaliziraju se novi.
 
