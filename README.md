@@ -2,7 +2,7 @@
 
 
 ## Sadržaj
- 1. Zahthjevi
+ 1. Zahtjevi
  2. Organizacija
  3. Opis dijelova
  	1. Zajednička osnova (L. M.)
@@ -48,7 +48,14 @@ Kod formi iz ovog dijela projekta možda je najzanimljivija korisnička kontrola
 Od ostalih formi možda je zanimljivo izdvojiti dizajn ćelija oblika na formi UredivanjeOblika, gdje su pojedine ćelije zapravo *checkboxevi* prikazani u *flat button* stilu.
 
 ### Logika igre (B. P.)
-(dovršiti)
+
+Kada se odabere konfiguracija, korisničko sučelje instancira objekt igre, tj. klasu Tetris. Konstruktor prima slijed odabranih nivoa, te njihove posebnosti ovisno o tome kakav je tip igre odabran (sve je sadržano u objektu TipIgre). Također, stvara se centralni dio ove klase: dvodimenzionalno polje *ploca* na kojem je prikazano trenutno stanje igre. Korisničko sučelje nakon toga aktivira *timer* koji u klasi Tetris periodično zove metodu Korak. Ova metoda, ovisno o brzini trenutnog nivoa odlučuje hoće li se stvarno dogoditi korak u životnom ciklusu igre, ili se neće dogoditi ništa. Ako se može dogoditi korak, poziva se privatno metoda gravitacijaAktivni koja spušta sve aktivne likove u smjeru u kojem je definirano padanje likova u trenutnom nivou.
+
+Prije svake kretnje aktivnih likova (pomaka, rotacije, ili gravitacije), *engine* prvo simulira navedenu akciju i gleda jesu li polja na ploči gdje bi se lik trebao naći u idućem koraku slobodna. U slučaju gravitacije, ako se lik ne može pomaknuti, on postaje deaktiviran. Ako nema aktivnih likova, inicijaliziraju se novi.
+
+Korisničko sučelje također presreće pritiske na tipkovnicu, te na određene tipke šalje zahtjeve za akcijom klasi Tetris, koja ih nakon uspješne simulacije i provodi. Simulacije su sadržane u privatnim metodama mozePomak i mozeRotacija, koje vraćaju bool ovisno o ishodu. Postoje i pomoćne metode koje enkapsuliraju neke česte akcije, kao što su uGranicama (provjerava je li neka simulirana pozicija likova još uvijek na ploči), te urediLikove, koja generira sljedeće oblike, te postavlja aktivne.
+
+Kako bi kod bio čitljiv, postoji nekoliko enumeracija koje sadrže vrste objekata i radnji, kao što su primjerice smjerovi, stanja polja na igraćoj ploči, te tipovi korisničkih interakcija (pomak ili rotacija). 
 
 ### Prikaz igre (G. G.)
 
