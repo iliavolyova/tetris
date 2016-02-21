@@ -26,11 +26,11 @@ namespace Tetris
         public Tetris(TipIgre _tip_igre)
         {
             tip_igre = _tip_igre;
-            ploca = novaPloca();
             trenutni_nivo = 0;
             rezultat = 0;
             nagradni_bodovi = 0;
             gotovaIgra = false;
+            novaPloca();
         }
 
         public enum Kvadrat
@@ -44,10 +44,10 @@ namespace Tetris
             OkupiraPrepreka 
         }
 
-        private Kvadrat[,] novaPloca()
+        private void novaPloca()
         {
             // + 2 zbog okvira od prepreka
-            Kvadrat[,] ploca = new Kvadrat[tip_igre.Redaka + 2, tip_igre.Stupaca + 2];
+            ploca = new Kvadrat[tip_igre.Redaka + 2, tip_igre.Stupaca + 2];
 
             // okvir od prepreka
             for (int i = 0; i < tip_igre.Stupaca + 2; ++i)
@@ -60,7 +60,11 @@ namespace Tetris
                 for (int j = 0; j < tip_igre.Stupaca; j++)
                     ploca[i + 1, j + 1] = Kvadrat.Slobodan;
 
-            return ploca;
+            if (tip_igre.Nivoi[trenutni_nivo].Prepreke)
+            {
+                postaviPrepreke();
+            }
+
         }
 
         public Kvadrat[,] StanjePloce()
@@ -70,7 +74,8 @@ namespace Tetris
 
         public Oblik SljedeciOblik()
         {
-            return Oblik.copy(Nivo().sljedeciOblik());
+            Oblik odabrani = Nivo().sljedeciOblik();
+            return Oblik.copy(odabrani);
         }
 
         public Oblik SljedeciDrugiOblik()
@@ -116,7 +121,7 @@ namespace Tetris
             }
             else
             {
-                ploca = novaPloca();
+                novaPloca();
             }
         }
 
@@ -170,6 +175,16 @@ namespace Tetris
                         pocistiPopunjeno();
                 }
             }
+        }
+
+        private void postaviPrepreke()
+        {
+            Random gen = new Random();
+
+            for (int i = 1; i < tip_igre.Redaka-1; ++i)
+                for (int j = 0; j < tip_igre.Stupaca-1; j++)
+                    if (gen.NextDouble() < 0.02)
+                        ploca[i, j] = Kvadrat.OkupiraPrepreka;
         }
 
         private void gravitacijaAktivni(Kvadrat lik)
