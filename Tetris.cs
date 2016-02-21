@@ -228,6 +228,9 @@ namespace Tetris
         }
 
         private bool mozePomak(Kvadrat kojiLik, Smjerovi smjer){
+            if (Nivo().Smjer == suprotanSmjer(smjer) && nagradni_bodovi <= 0)
+                return false;
+
             for (int i = 1; i < tip_igre.Redaka + 1; ++i)
                 for (int j = 1; j < tip_igre.Stupaca + 1; ++j)
                     if (ploca[i, j] == kojiLik)
@@ -246,6 +249,9 @@ namespace Tetris
             Oblik oblik = kojiLik == Kvadrat.OkupiraPrviLik ? aktivniOblikPrvi : aktivniOblikDrugi;
             if (oblik == null)
                 return;
+
+            if (Nivo().Smjer == suprotanSmjer(smjer))
+                nagradni_bodovi--;
 
             oblik.Pozicija = nxt(oblik.Pozicija.Item1, oblik.Pozicija.Item2, smjer);
 
@@ -364,7 +370,23 @@ namespace Tetris
                 default:
                     return new Tuple<int, int>(red, stup - 1);
             }
-        } 
+        }
+
+        private Smjerovi suprotanSmjer(Smjerovi s)
+        {
+            switch (s)
+            {
+                case Smjerovi.Desno:
+                    return Smjerovi.Lijevo;
+                case Smjerovi.Lijevo:
+                    return Smjerovi.Desno;
+                case Smjerovi.Gore:
+                    return Smjerovi.Dolje;
+                default:
+                case Smjerovi.Dolje:
+                    return Smjerovi.Gore;
+            }
+        }
 
         private bool uGranicama(Tuple<int, int> poz){
             return poz.Item1 > 0 && poz.Item2 > 0 && poz.Item1 < tip_igre.Redaka + 1 && poz.Item2 < tip_igre.Stupaca + 1;
@@ -416,7 +438,7 @@ namespace Tetris
                         {
                             pomakniDeaktivirano(i);
                             pribrojiBodove(bonusMultiplier);
-                            bonusMultiplier += 0.05 * Nivo().Brzina;
+                            bonusMultiplier += 0.1 * Nivo().Brzina;
                         }
                     }
                     break;       
@@ -471,7 +493,11 @@ namespace Tetris
         }
 
         private void pribrojiBodove(double multiplier){
-            rezultat += (int)(10 * multiplier);
+            rezultat += (int)(100 * multiplier);
+            if (multiplier > 1) 
+            { 
+                nagradni_bodovi += 5; 
+            }
         }
 
         void PohraniRezultat()
