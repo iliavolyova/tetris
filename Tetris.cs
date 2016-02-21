@@ -251,12 +251,25 @@ namespace Tetris
                     if (ploca[i, j] == kojiLik)
                     {
                         var sljedeciIndeksi = nxt(i,j, smjer);
-                        if (!uGranicama(sljedeciIndeksi) || ploca[sljedeciIndeksi.Item1, sljedeciIndeksi.Item2] == Kvadrat.DeaktiviraniPrvi)
+                        if (!uGranicama(sljedeciIndeksi) || zauzet(ploca[sljedeciIndeksi.Item1, sljedeciIndeksi.Item2]))
                         {
                             return false;
                         }
                     }
             return true;
+        }
+
+        private bool zauzet(Kvadrat k)
+        {
+            switch (k)
+            {
+                case Kvadrat.DeaktiviraniPrvi:
+                case Kvadrat.DeaktiviraniDrugi:
+                case Kvadrat.OkupiraPrepreka:
+                    return true;
+                default:
+                    return false;
+            }
         }
 
         private void pomakni(Kvadrat kojiLik, Smjerovi smjer)
