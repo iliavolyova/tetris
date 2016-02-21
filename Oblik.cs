@@ -35,6 +35,11 @@ namespace Tetris
             Boja = _Boja ?? Color.Red;
         }
 
+        public static Oblik copy(Oblik o)
+        {
+            return new Oblik(o.Ime, o.Celije, o.Boja);
+        }
+
         public static Oblik NapraviOblik(XElement x)
         {
             Oblik o = new Oblik();
@@ -70,9 +75,6 @@ namespace Tetris
             celije_iz_stringa(x.Attribute("celije").Value);
             Boja = Color.FromArgb(int.Parse(x.Attribute("boja").Value));
         }
-
-
-
 
         // instancirani oblik
         public Tuple<int, int> Pozicija { get; set; }

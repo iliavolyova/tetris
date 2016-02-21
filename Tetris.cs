@@ -70,7 +70,7 @@ namespace Tetris
 
         public Oblik SljedeciOblik()
         {
-            return Nivo().sljedeciOblik();
+            return Oblik.copy(Nivo().sljedeciOblik());
         }
 
         public Oblik SljedeciDrugiOblik()
@@ -197,8 +197,9 @@ namespace Tetris
         private bool mozeRotacija(Kvadrat kojiLik)
         {
             Oblik koji = kojiLik == Kvadrat.OkupiraPrviLik ? aktivniOblikPrvi : aktivniOblikDrugi;
-            
-            bool[,] rotirano = koji.SimulirajRotaciju();
+            koji.Rotiraj();
+
+            bool[,] rotirano = koji.Celije;
             var boundingBox = koji.Pozicija;
 
             for (int i = boundingBox.Item1, k = 0; i < boundingBox.Item1 + 4; ++i, ++k)
@@ -212,9 +213,8 @@ namespace Tetris
         private void rotiraj(Kvadrat kojiLik)
         {
             Oblik koji = kojiLik == Kvadrat.OkupiraPrviLik ? aktivniOblikPrvi : aktivniOblikDrugi;
-            koji.Rotiraj();
 
-            var noveCelije = koji.Celije;
+            var noveCelije = koji.SimulirajRotaciju();
             var boundingBox = koji.Pozicija;
 
             for (int i = boundingBox.Item1, k = 0; i < boundingBox.Item1 + 4; ++i, ++k)
