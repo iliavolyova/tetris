@@ -317,7 +317,7 @@ namespace Tetris
                             if (ploca[i, j] != Kvadrat.Slobodan) return false;
                             ploca[i, j] = aktivniOblikPrvi.Celije[k, l] ? kojiLik : ploca[i, j];
                         }
-                    aktivniOblikPrvi.Pozicija = new Tuple<int, int>(tip_igre.Redaka-1, tip_igre.Stupaca / 2 - 2);
+                    aktivniOblikPrvi.Pozicija = new Tuple<int, int>(tip_igre.Redaka-4, tip_igre.Stupaca / 2 - 2);
                     break;
                 case Smjerovi.Desno:
                     for (int i = tip_igre.Redaka / 2 - 2, k = 0; i < tip_igre.Redaka / 2 + 2; ++i, ++k)
@@ -336,7 +336,7 @@ namespace Tetris
                             if (ploca[i, j] != Kvadrat.Slobodan) return false;
                             ploca[i, j] = aktivniOblikPrvi.Celije[k, l] ? kojiLik : ploca[i, j];
                         }
-                    aktivniOblikPrvi.Pozicija = new Tuple<int, int>(tip_igre.Redaka / 2 - 2, tip_igre.Stupaca-1);
+                    aktivniOblikPrvi.Pozicija = new Tuple<int, int>(tip_igre.Redaka / 2 - 2, tip_igre.Stupaca-4);
                     break;
             }
             return true;
