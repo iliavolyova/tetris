@@ -78,5 +78,11 @@ namespace Tetris
         {
             Application.Exit();
         }
+
+        private void pravilaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Pravila pravila = new Pravila();
+            pravila.Show();
+        }
     }
 }

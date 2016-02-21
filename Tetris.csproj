@@ -59,6 +59,12 @@
       <DependentUpon>OIgri.cs</DependentUpon>
     </Compile>
     <Compile Include="Postavke.cs" />
+    <Compile Include="Pravila.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pravila.Designer.cs">
+      <DependentUpon>Pravila.cs</DependentUpon>
+    </Compile>
     <Compile Include="PrikazIgre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OIgri.resx">
       <DependentUpon>OIgri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pravila.resx">
+      <DependentUpon>Pravila.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrikazIgre.resx">
       <DependentUpon>PrikazIgre.cs</DependentUpon>
@@ -151,6 +160,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="resursi\tile_mask.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resursi\button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resursi\button_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resursi\dvostrukiOblik.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resursi\line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resursi\nasTetris.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -117,47 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="box1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resursi\box1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lblDvostrukiTekst.Text" xml:space="preserve">
+    <value>Na određenim nivoima igre moguće je, ukoliko je to zadano, da se pojavljuju dva oblika istovremeno. 
+Tada je igrač primoran da koristi oba dva oblika tako da prebacuje kontrolu micanja i rotacije s jednog oblika na drugi.
+</value>
   </data>
-  <data name="box2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resursi\box2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bs_bright" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resursi\bs_bright.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="button" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resursi\button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="button_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resursi\button_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="dvostrukiOblik" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resursi\dvostrukiOblik.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resursi\line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="nasTetris" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resursi\nasTetris.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pattern" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resursi\pattern.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="smjer_desno" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resursi\smjer_desno.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="smjer_dolje" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resursi\smjer_dolje.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="smjer_gore" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resursi\smjer_gore.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="smjer_lijevo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resursi\smjer_lijevo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="tile_mask" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resursi\tile_mask.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lblPravilaTekst.Text" xml:space="preserve">
+    <value>Oblici koje zovemo tetromini sastavljeni su od strane korisnika, pomoću 4x4 polja. Takvi oblici kreću se ovisno o zadanom smjeru kretanja određenog nivoa igre. Igrač može rotirati te pomicati jednog ili dva oblika. Cilj je da između složenih oblika nema praznog prostora. Kada se popuni jedan ili više redova, tada oni nestaju te igrač dobivam određeni broj bodova.
+</value>
   </data>
 </root>

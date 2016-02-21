@@ -47,10 +47,8 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            //this.prikazRezultata1 = new Tetris.PrikazRezultata();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,32 +71,32 @@
             this.toolStripSeparator2,
             this.izlazToolStripMenuItem});
             this.tetrisToolStripMenuItem.Name = "tetrisToolStripMenuItem";
-            this.tetrisToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.tetrisToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.tetrisToolStripMenuItem.Text = "Postavke";
             // 
             // postavkeToolStripMenuItem
             // 
             this.postavkeToolStripMenuItem.Name = "postavkeToolStripMenuItem";
-            this.postavkeToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.postavkeToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.postavkeToolStripMenuItem.Text = "Uredi tipove...";
             this.postavkeToolStripMenuItem.Click += new System.EventHandler(this.postavkeToolStripMenuItem_Click);
             // 
             // urediOblikeToolStripMenuItem
             // 
             this.urediOblikeToolStripMenuItem.Name = "urediOblikeToolStripMenuItem";
-            this.urediOblikeToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.urediOblikeToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.urediOblikeToolStripMenuItem.Text = "Uredi oblike...";
             this.urediOblikeToolStripMenuItem.Click += new System.EventHandler(this.urediOblikeToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(144, 6);
             // 
             // izlazToolStripMenuItem
             // 
             this.izlazToolStripMenuItem.Name = "izlazToolStripMenuItem";
-            this.izlazToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.izlazToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.izlazToolStripMenuItem.Text = "Izlaz";
             this.izlazToolStripMenuItem.Click += new System.EventHandler(this.izlazToolStripMenuItem_Click);
             // 
@@ -109,24 +107,25 @@
             this.toolStripSeparator3,
             this.oIgriToolStripMenuItem});
             this.pomoćToolStripMenuItem.Name = "pomoćToolStripMenuItem";
-            this.pomoćToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.pomoćToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.pomoćToolStripMenuItem.Text = "Pomoć";
             // 
             // pravilaToolStripMenuItem
             // 
             this.pravilaToolStripMenuItem.Name = "pravilaToolStripMenuItem";
-            this.pravilaToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.pravilaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pravilaToolStripMenuItem.Text = "Pravila...";
+            this.pravilaToolStripMenuItem.Click += new System.EventHandler(this.pravilaToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(115, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // oIgriToolStripMenuItem
             // 
             this.oIgriToolStripMenuItem.Name = "oIgriToolStripMenuItem";
-            this.oIgriToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.oIgriToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.oIgriToolStripMenuItem.Text = "O igri...";
             this.oIgriToolStripMenuItem.Click += new System.EventHandler(this.oIgriToolStripMenuItem_Click);
             // 
@@ -220,13 +219,10 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(295, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(325, 17);
             this.toolStripStatusLabel1.Text = "Dobrodošli u Tetris! Odaberite karticu sa željenim tipom igre.";
             // 
-            // prikazRezultata1
-            // 
-            // 
-            // Form1
+            // Pocetna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -235,13 +231,12 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "Pocetna";
             this.Text = "Tetris";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
