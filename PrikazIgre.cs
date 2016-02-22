@@ -162,7 +162,7 @@ namespace Tetris
                             p = igra.aktivniOblikDrugi.vratiBrush();
                             break;
                         case Tetris.Kvadrat.DeaktiviraniDrugi:
-                            p = Brushes.DarkGreen;
+                            p = Brushes.Yellow;
                             break;
                         case Tetris.Kvadrat.OkupiraNagradni:
                             p = Brushes.Yellow;
