@@ -247,7 +247,7 @@ namespace Tetris
         }
 
         private bool mozePomak(Kvadrat kojiLik, Smjerovi smjer){
-            if (Nivo().Smjer == suprotanSmjer(smjer) && nagradni_bodovi <= 0)
+            if (Nivo().Smjer == suprotanSmjer(smjer) && (nagradni_bodovi <= 0 || !Nivo().NagradniKvadratici))
                 return false;
 
             for (int i = 1; i < tip_igre.Redaka + 1; ++i)
@@ -359,7 +359,7 @@ namespace Tetris
                     aktivni.Pozicija = new Tuple<int, int>(1, tip_igre.Stupaca / 2 - 2 + shift);
                     break;
                 case Smjerovi.Gore:
-                    for (int i = tip_igre.Redaka-4, k = 0; i < tip_igre.Redaka; ++i, ++k)
+                    for (int i = tip_igre.Redaka - 3, k = 0; i < tip_igre.Redaka + 1; ++i, ++k)
                         for (int j = tip_igre.Stupaca / 2 - 2 + shift, l = 0; j < tip_igre.Stupaca / 2 + 2 + shift; ++j, ++l)
                         {
                             if (ploca[i, j] != Kvadrat.Slobodan) return false;
@@ -379,7 +379,7 @@ namespace Tetris
                 case Smjerovi.Lijevo:
                 default:
                     for (int i = tip_igre.Redaka / 2 - 2 + shift, k = 0; i < tip_igre.Redaka / 2 + 2 + shift; ++i, ++k)
-                        for (int j = tip_igre.Stupaca - 4, l = 0; j < tip_igre.Stupaca; ++j, ++l)
+                        for (int j = tip_igre.Stupaca - 3, l = 0; j < tip_igre.Stupaca + 1; ++j, ++l)
                         {
                             if (ploca[i, j] != Kvadrat.Slobodan) return false;
                             ploca[i, j] = aktivni.Celije[k, l] ? kojiLik : ploca[i, j];
