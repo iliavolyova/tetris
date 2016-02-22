@@ -289,11 +289,11 @@
             // trackBar3
             // 
             this.trackBar3.LargeChange = 1;
-            this.trackBar3.Location = new System.Drawing.Point(143, 38);
+            this.trackBar3.Location = new System.Drawing.Point(143, 36);
             this.trackBar3.Maximum = 7;
             this.trackBar3.Minimum = 1;
             this.trackBar3.Name = "trackBar3";
-            this.trackBar3.Size = new System.Drawing.Size(104, 42);
+            this.trackBar3.Size = new System.Drawing.Size(104, 45);
             this.trackBar3.TabIndex = 6;
             this.trackBar3.Value = 1;
             this.trackBar3.ValueChanged += new System.EventHandler(this.trackBar3_ValueChanged);
@@ -384,11 +384,11 @@
             // trackBar2
             // 
             this.trackBar2.LargeChange = 1;
-            this.trackBar2.Location = new System.Drawing.Point(143, 38);
+            this.trackBar2.Location = new System.Drawing.Point(143, 36);
             this.trackBar2.Maximum = 7;
             this.trackBar2.Minimum = 1;
             this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(104, 42);
+            this.trackBar2.Size = new System.Drawing.Size(104, 45);
             this.trackBar2.TabIndex = 6;
             this.trackBar2.Value = 1;
             this.trackBar2.ValueChanged += new System.EventHandler(this.trackBar2_ValueChanged);
@@ -497,11 +497,11 @@
             // trackBar1
             // 
             this.trackBar1.LargeChange = 1;
-            this.trackBar1.Location = new System.Drawing.Point(143, 38);
+            this.trackBar1.Location = new System.Drawing.Point(143, 36);
             this.trackBar1.Maximum = 7;
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(104, 42);
+            this.trackBar1.Size = new System.Drawing.Size(104, 45);
             this.trackBar1.TabIndex = 6;
             this.trackBar1.Value = 1;
             this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);

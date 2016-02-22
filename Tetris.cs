@@ -171,6 +171,11 @@ namespace Tetris
                 if (!gotovaIgra)
                 {
                     gravitacijaAktivni(Kvadrat.OkupiraPrviLik);
+                    if (Nivo().ViseLikova)
+                    {
+                        gravitacijaAktivni(Kvadrat.OkupiraDrugiLik);
+                    }
+                   
                     if (!gotovaIgra)
                         pocistiPopunjeno();
                 }
@@ -250,7 +255,7 @@ namespace Tetris
                     if (ploca[i, j] == kojiLik)
                     {
                         var sljedeciIndeksi = nxt(i,j, smjer);
-                        if (!uGranicama(sljedeciIndeksi) || zauzet(ploca[sljedeciIndeksi.Item1, sljedeciIndeksi.Item2]))
+                        if (!uGranicama(sljedeciIndeksi) || zauzet(ploca[sljedeciIndeksi.Item1, sljedeciIndeksi.Item2]) || okupiraDrugi(kojiLik, ploca[sljedeciIndeksi.Item1, sljedeciIndeksi.Item2]))
                         {
                             return false;
                         }
@@ -269,6 +274,11 @@ namespace Tetris
                 default:
                     return false;
             }
+        }
+
+        private bool okupiraDrugi(Kvadrat prvi, Kvadrat drugi)
+        {
+            return Nivo().ViseLikova && (prvi == Kvadrat.OkupiraPrviLik && drugi == Kvadrat.OkupiraDrugiLik) || (prvi == Kvadrat.OkupiraDrugiLik && drugi == Kvadrat.OkupiraPrviLik);
         }
 
         private void pomakni(Kvadrat kojiLik, Smjerovi smjer)
@@ -324,62 +334,97 @@ namespace Tetris
 
         private bool inicijaliziraj(Kvadrat kojiLik)
         {
-            urediLikove();
+            bool prvi = kojiLik == Kvadrat.OkupiraPrviLik;
+            bool viseLikova = Nivo().ViseLikova;
+
+            urediLikove(kojiLik);
+
+            Oblik aktivni = kojiLik == Kvadrat.OkupiraPrviLik ? aktivniOblikPrvi : aktivniOblikDrugi;
+
+            int shift = 0;
+            if (viseLikova && kojiLik == Kvadrat.OkupiraPrviLik)
+                shift = 2;
+            if (viseLikova && kojiLik == Kvadrat.OkupiraDrugiLik)
+                shift = -2;
 
             switch (Nivo().Smjer)
             {
                 case Smjerovi.Dolje:
                     for (int i = 1, k = 0; i < 5; ++i, ++k)
-                        for (int j = tip_igre.Stupaca / 2 - 2, l = 0; j < tip_igre.Stupaca / 2 + 2; ++j, ++l)
+                        for (int j = tip_igre.Stupaca / 2 - 2 + shift, l = 0; j < tip_igre.Stupaca / 2 + 2 + shift; ++j, ++l)
                         {
                             if (ploca[i, j] != Kvadrat.Slobodan) return false;
-                            ploca[i, j] = aktivniOblikPrvi.Celije[k, l] ? kojiLik : ploca[i, j];
+                            ploca[i, j] = aktivni.Celije[k, l] ? kojiLik : ploca[i, j];
                         } 
-                    aktivniOblikPrvi.Pozicija = new Tuple<int, int>(1, tip_igre.Stupaca / 2 - 2);
+                    aktivni.Pozicija = new Tuple<int, int>(1, tip_igre.Stupaca / 2 - 2 + shift);
                     break;
                 case Smjerovi.Gore:
                     for (int i = tip_igre.Redaka-4, k = 0; i < tip_igre.Redaka; ++i, ++k)
-                        for (int j = tip_igre.Stupaca / 2 - 2, l = 0; j < tip_igre.Stupaca / 2 + 2; ++j, ++l)
+                        for (int j = tip_igre.Stupaca / 2 - 2 + shift, l = 0; j < tip_igre.Stupaca / 2 + 2 + shift; ++j, ++l)
                         {
                             if (ploca[i, j] != Kvadrat.Slobodan) return false;
-                            ploca[i, j] = aktivniOblikPrvi.Celije[k, l] ? kojiLik : ploca[i, j];
+                            ploca[i, j] = aktivni.Celije[k, l] ? kojiLik : ploca[i, j];
                         }
-                    aktivniOblikPrvi.Pozicija = new Tuple<int, int>(tip_igre.Redaka-4, tip_igre.Stupaca / 2 - 2);
+                    aktivni.Pozicija = new Tuple<int, int>(tip_igre.Redaka-4, tip_igre.Stupaca / 2 - 2 + shift);
                     break;
                 case Smjerovi.Desno:
-                    for (int i = tip_igre.Redaka / 2 - 2, k = 0; i < tip_igre.Redaka / 2 + 2; ++i, ++k)
+                    for (int i = tip_igre.Redaka / 2 - 2 + shift, k = 0; i < tip_igre.Redaka / 2 + 2 + shift; ++i, ++k)
                         for (int j = 1, l = 0; j < 5; ++j, ++l)
                         {
                             if (ploca[i, j] != Kvadrat.Slobodan) return false;
-                            ploca[i, j] = aktivniOblikPrvi.Celije[k, l] ? kojiLik : ploca[i, j];
+                            ploca[i, j] = aktivni.Celije[k, l] ? kojiLik : ploca[i, j];
                         }
-                    aktivniOblikPrvi.Pozicija = new Tuple<int, int>(tip_igre.Redaka/2 -2, 1);
+                    aktivni.Pozicija = new Tuple<int, int>(tip_igre.Redaka/2 - 2 + shift, 1);
                     break;
                 case Smjerovi.Lijevo:
                 default:
-                    for (int i = tip_igre.Redaka / 2 - 2, k = 0; i < tip_igre.Redaka / 2 + 2; ++i, ++k)
+                    for (int i = tip_igre.Redaka / 2 - 2 + shift, k = 0; i < tip_igre.Redaka / 2 + 2 + shift; ++i, ++k)
                         for (int j = tip_igre.Stupaca - 4, l = 0; j < tip_igre.Stupaca; ++j, ++l)
                         {
                             if (ploca[i, j] != Kvadrat.Slobodan) return false;
-                            ploca[i, j] = aktivniOblikPrvi.Celije[k, l] ? kojiLik : ploca[i, j];
+                            ploca[i, j] = aktivni.Celije[k, l] ? kojiLik : ploca[i, j];
                         }
-                    aktivniOblikPrvi.Pozicija = new Tuple<int, int>(tip_igre.Redaka / 2 - 2, tip_igre.Stupaca-4);
+                    aktivni.Pozicija = new Tuple<int, int>(tip_igre.Redaka / 2 - 2 + shift, tip_igre.Stupaca-4);
                     break;
             }
+            
+            if (kojiLik == Kvadrat.OkupiraPrviLik) 
+                aktivniOblikPrvi = aktivni;
+            else 
+                aktivniOblikDrugi = aktivni;
+
             return true;
         }
 
-        private void urediLikove()
+        private void urediLikove(Kvadrat koji)
         {
-            if (sljedeciOblikPrvi != null)
+            if (koji == Kvadrat.OkupiraPrviLik)
             {
-                aktivniOblikPrvi = sljedeciOblikPrvi;
-                sljedeciOblikPrvi = SljedeciOblik();
+                if (sljedeciOblikPrvi != null)
+                {
+                    aktivniOblikPrvi = sljedeciOblikPrvi;
+                    sljedeciOblikPrvi = SljedeciOblik();
+                }
+                else
+                {
+                    aktivniOblikPrvi = SljedeciOblik();
+                    sljedeciOblikPrvi = SljedeciOblik();
+                }
             }
-            else
+            
+
+            if (koji == Kvadrat.OkupiraDrugiLik)
             {
-                aktivniOblikPrvi = SljedeciOblik();
-                sljedeciOblikPrvi = SljedeciOblik();
+                if (sljedeciOblikDrugi != null)
+                {
+                    aktivniOblikDrugi = sljedeciOblikDrugi;
+                    sljedeciOblikDrugi = SljedeciOblik();
+                }
+                else
+                {
+                    aktivniOblikDrugi = SljedeciOblik();
+                    sljedeciOblikDrugi = SljedeciOblik();
+                }
             }
         }
 
