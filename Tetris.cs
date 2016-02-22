@@ -222,7 +222,7 @@ namespace Tetris
 
             for (int i = boundingBox.Item1, k = 0; i < boundingBox.Item1 + 4; ++i, ++k)
                 for (int j = boundingBox.Item2, l = 0; j < boundingBox.Item2 + 4; ++j, ++l)
-                    if (i < 0 || j < 0 || rotirano[k, l] && ((ploca[i, j] != Kvadrat.Slobodan && ploca[i, j] != kojiLik) || !uGranicama(new Tuple<int,int>(i,j))))
+                    if (rotirano[k, l] && ((ploca[i, j] != Kvadrat.Slobodan && ploca[i, j] != kojiLik) || !uGranicama(new Tuple<int, int>(i, j))))
                         return false;
 
             return true;
@@ -364,7 +364,7 @@ namespace Tetris
                             if (ploca[i, j] != Kvadrat.Slobodan) return false;
                             ploca[i, j] = aktivni.Celije[k, l] ? kojiLik : ploca[i, j];
                         }
-                    aktivni.Pozicija = new Tuple<int, int>(tip_igre.Redaka-4, tip_igre.Stupaca / 2 - 2 + shift);
+                    aktivni.Pozicija = new Tuple<int, int>(tip_igre.Redaka - 3, tip_igre.Stupaca / 2 - 2 + shift);
                     break;
                 case Smjerovi.Desno:
                     for (int i = tip_igre.Redaka / 2 - 2 + shift, k = 0; i < tip_igre.Redaka / 2 + 2 + shift; ++i, ++k)
@@ -383,7 +383,7 @@ namespace Tetris
                             if (ploca[i, j] != Kvadrat.Slobodan) return false;
                             ploca[i, j] = aktivni.Celije[k, l] ? kojiLik : ploca[i, j];
                         }
-                    aktivni.Pozicija = new Tuple<int, int>(tip_igre.Redaka / 2 - 2 + shift, tip_igre.Stupaca-4);
+                    aktivni.Pozicija = new Tuple<int, int>(tip_igre.Redaka / 2 - 2 + shift, tip_igre.Stupaca - 3);
                     break;
             }
             
