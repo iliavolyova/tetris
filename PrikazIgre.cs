@@ -249,6 +249,9 @@ namespace Tetris
                 }
             }
 
+            panel6.Visible = igra.Nivo().NagradniKvadratici;
+            label4.Visible = igra.Nivo().NagradniKvadratici;
+
             countdown--;
             if (countdown == 0)
             {
