@@ -212,9 +212,8 @@ namespace Tetris
         private bool mozeRotacija(Kvadrat kojiLik)
         {
             Oblik koji = kojiLik == Kvadrat.OkupiraPrviLik ? aktivniOblikPrvi : aktivniOblikDrugi;
-            koji.Rotiraj();
 
-            bool[,] rotirano = koji.Celije;
+            bool[,] rotirano = koji.SimulirajRotaciju();
             var boundingBox = koji.Pozicija;
 
             for (int i = boundingBox.Item1, k = 0; i < boundingBox.Item1 + 4; ++i, ++k)
@@ -229,15 +228,15 @@ namespace Tetris
         {
             Oblik koji = kojiLik == Kvadrat.OkupiraPrviLik ? aktivniOblikPrvi : aktivniOblikDrugi;
 
-            var noveCelije = koji.SimulirajRotaciju();
+            koji.Rotiraj();
             var boundingBox = koji.Pozicija;
 
             for (int i = boundingBox.Item1, k = 0; i < boundingBox.Item1 + 4; ++i, ++k)
                 for (int j = boundingBox.Item2, l = 0; j < boundingBox.Item2 + 4; ++j, ++l)
                 {
-                    if (noveCelije[k, l])
+                    if (koji.Celije[k, l])
                         ploca[i, j] = kojiLik;
-                    else if (!noveCelije[k, l] && ploca[i, j] == kojiLik)
+                    else if (!koji.Celije[k, l] && ploca[i, j] == kojiLik)
                         ploca[i, j] = Kvadrat.Slobodan;
                 }    
         }
