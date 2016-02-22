@@ -133,6 +133,16 @@ namespace Tetris.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap nagradniBodovi {
+            get {
+                object obj = ResourceManager.GetObject("nagradniBodovi", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap nasTetris {
             get {
                 object obj = ResourceManager.GetObject("nasTetris", resourceCulture);
@@ -146,6 +156,16 @@ namespace Tetris.Properties {
         internal static System.Drawing.Bitmap pattern {
             get {
                 object obj = ResourceManager.GetObject("pattern", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap prepreka {
+            get {
+                object obj = ResourceManager.GetObject("prepreka", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

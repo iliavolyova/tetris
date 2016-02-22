@@ -181,8 +181,8 @@ namespace Tetris
         {
             Random gen = new Random();
 
-            for (int i = 1; i < tip_igre.Redaka-1; ++i)
-                for (int j = 0; j < tip_igre.Stupaca-1; j++)
+            for (int i = (tip_igre.Redaka/3); i < tip_igre.Redaka-1; ++i)
+                for (int j = 1; j < tip_igre.Stupaca-1; j++)
                     if (gen.NextDouble() < 0.02)
                         ploca[i, j] = Kvadrat.OkupiraPrepreka;
         }

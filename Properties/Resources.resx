@@ -139,11 +139,17 @@
   <data name="line" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resursi\line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="nagradniBodovi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resursi\nagradniBodovi.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="nasTetris" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resursi\nasTetris.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pattern" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resursi\pattern.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="prepreka" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resursi\prepreka.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="smjer_desno" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resursi\smjer_desno.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

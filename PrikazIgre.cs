@@ -32,8 +32,6 @@ namespace Tetris
             igra = new Tetris(tig);
             this.tig = tig;
 
-            //tig.Nivoi[igra.trenutni_nivo].ViseLikova = true;
-
             //ucitavanje
             img = new Bitmap(Properties.Resources.tile_mask);
             img1 = new Bitmap(Properties.Resources.tile_mask);
@@ -140,8 +138,6 @@ namespace Tetris
             Tetris.Kvadrat[,] ploca = igra.StanjePloce();
             Bitmap bm = new Bitmap(bit);
             Graphics g = Graphics.FromImage(bm);
-            
-            //g.Clear(Color.White);
 
             int w = panel1.Width / (tig.Stupaca + 2);
             int h = panel1.Height / (tig.Redaka + 2);
@@ -155,10 +151,8 @@ namespace Tetris
                     {
                         case Tetris.Kvadrat.OkupiraPrviLik:
                             p = igra.aktivniOblikPrvi.vratiBrush();
-                            //p = Brushes.Yellow;
                             break;
                         case Tetris.Kvadrat.DeaktiviraniPrvi:
-                            //p = igra.SljedeciOblik().vratiBrush();
                             p = Brushes.Yellow;
                             break;
                         case Tetris.Kvadrat.OkupiraPrepreka:
@@ -181,8 +175,13 @@ namespace Tetris
                     {
                         g.FillRectangle(p, new Rectangle(new Point((s * w) + 1, (r * h) + 1), new Size(w - 3, h - 3)));
                         g.DrawImage(img, new Point(s * w, r * h));
+                    }
 
-                        //g.DrawImage(img2, new Point(s * w, r * h));
+                    //dio za prepreke
+                    if( s!=0 && r!=0 && (r < tig.Redaka + 1 ) && (s < tig.Stupaca + 1) && tig.Nivoi[igra.trenutni_nivo].Prepreke && ploca[r,s] == Tetris.Kvadrat.OkupiraPrepreka)
+                    {
+                        g.FillRectangle(p, new Rectangle(new Point((s * w) + 1, (r * h) + 1), new Size(w - 3, h - 3)));
+                        g.DrawImage(img, new Point(s * w, r * h));
                     }
                 }
             }
@@ -204,7 +203,6 @@ namespace Tetris
                 Close();
                 return;
             }
-
             
             igra.Korak(countdown);
             if (igra.GotovaIgra())

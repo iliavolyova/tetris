@@ -19,7 +19,7 @@ namespace Tetris
             InitializeComponent();
 
             gumbi = new PictureBox[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4 };
-            paneli = new Panel[] { panelPravila, panelDvostruki };
+            paneli = new Panel[] { panelPravila, panelDvostruki, panelNagradniBodovi, panelPrepreke };
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -37,13 +37,13 @@ namespace Tetris
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             oznaciGumb(2);
-            prikaziPanel(0);
+            prikaziPanel(2);
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             oznaciGumb(3);
-            prikaziPanel(1);
+            prikaziPanel(3);
         }
 
         private void oznaciGumb(int poz)

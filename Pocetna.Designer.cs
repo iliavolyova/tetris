@@ -265,7 +265,7 @@
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private PrikazRezultata prikazRezultata1;
+        
     }
 }
 
