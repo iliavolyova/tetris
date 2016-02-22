@@ -136,12 +136,11 @@ namespace Tetris
             Rotacija
         }
         
-        public void ZatraziAkciju(TipInterakcije tip, 
-            int redni_broj_lika, Smjerovi smjer)
+        public void ZatraziAkciju(TipInterakcije tip, int redni_broj_lika, Smjerovi smjer)
         {
-            Kvadrat likZaPomicanje = redni_broj_lika == 0 ? 
-                Kvadrat.OkupiraPrviLik : Kvadrat.OkupiraDrugiLik;
+            Kvadrat likZaPomicanje = redni_broj_lika == 0 ? Kvadrat.OkupiraPrviLik : Kvadrat.OkupiraDrugiLik;
 
+            if (redni_broj_lika == 1 && !Nivo().ViseLikova) return;
 
             switch (tip)
             {
