@@ -170,7 +170,7 @@ namespace Tetris
                 if (!gotovaIgra)
                 {
                     gravitacijaAktivni(Kvadrat.OkupiraPrviLik);
-                    if (Nivo().ViseLikova)
+                    if (Nivo().ViseLikova && !gotovaIgra)
                     {
                         gravitacijaAktivni(Kvadrat.OkupiraDrugiLik);
                     }
